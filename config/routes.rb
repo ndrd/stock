@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :welcomes
-
   resources :items
+
+  resources :welcomes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcomes#index'
 
-  get 'cash' => 'stocker#cash'
+  get 'cash' => 'stock#cash'
+
+  get 'stock' => 'stock#stock'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

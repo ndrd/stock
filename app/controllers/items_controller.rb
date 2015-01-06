@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def cash
+    render 
+  end
+
   # GET /items/1/edit
   def edit
   end
@@ -69,6 +73,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:code, :description, :sale, :cost, :stock, :rank)
+      params[:item]
     end
 end

@@ -15,25 +15,25 @@
   <div class="main content clearfix" >
   <!--menu-->
   <nav id="nav" >
-      <a href="info" id="logo" class="logo"></a>
+      <a href="/info" id="logo" class="logo"></a>
       <ul id="nav-items" >
 
       <li>
-        <a href="cash" id="nav-search" url="cash" class="icon search-32 menu-item active">
+        <a href="/cash" id="nav-search" url="cash" class="icon search-32 menu-item active">
         <span class="nav-text">Caja</span></a>
       </li>
 
       <li>
-      <a href="stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
+      <a href="/stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
       <span class="nav-text">Productos</span></a></li>
-      <li><a href="admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
+      <li><a href="/admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
 
-      <li><a  href="payments" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
+      <li><a  href="/payments" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
 
 
-      <li><a  href="users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
+      <li><a  href="/users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
 
-      <li><a  href="events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
+      <li><a  href="/events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
 
 
       <li class="item-profile">
@@ -70,8 +70,9 @@
 -->
   <!-- end alerts -->
   <div class="layout">
+
   <section id="content">
-   
+   <%= yield %>
   </section>
   <!-- alerts -->
   <!--

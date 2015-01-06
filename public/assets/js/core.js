@@ -1,3 +1,13 @@
+$(function(){
+	  $("nav").find("a").each(function(k,v){ 
+      loc = $(v).attr("href");
+      $(v).removeClass("active")
+      console.log(loc + " vs " + location.pathname )
+      if(loc === location.pathname)
+        $(v).addClass("active")
+    });
+});
+
 window.modeSearch = false;
 window.apiUrl = "kaiser.php";
 window.user = null;
@@ -258,14 +268,11 @@ var changeSelected =  function(target) {
 
 
 var getPage =  function(target, canvas) {
-	$.ajax("views/error.stock")
-	.done(function(d){
-		$("#content").empty();
-		$("#content").append(d);
-	});
+
 }
 
 
 var getReport =  function() {
 	var call = $.post("kaiser.php",{report:""})
 }
+

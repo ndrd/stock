@@ -16,4 +16,17 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "items", id: false, force: true do |t|
+    t.integer "id",          default: "nextval('item_id_seq'::regclass)", null: false
+    t.text    "hash"
+    t.text    "code",                                                     null: false
+    t.text    "description",                                              null: false
+    t.float   "sale",                                                     null: false
+    t.float   "cost",                                                     null: false
+    t.float   "stock",                                                    null: false
+    t.float   "rank",                                                     null: false
+    t.text    "slug",                                                     null: false
+    t.integer "category",                                                 null: false
+  end
+
 end
