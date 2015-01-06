@@ -1,14 +1,224 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Stock</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="es"><head>
+  <meta charset="utf-8">  
+  <head>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/fonts.css">
+  
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/main.css">
+    <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/mini.css">
+   
 
-<%= yield %>
+  </head>
+  <div class="wrapper">
 
-</body>
+  <div class="main content clearfix" >
+  <!--menu-->
+  <nav id="nav" >
+      <a href="info" id="logo" class="logo"></a>
+      <ul id="nav-items" >
+
+      <li>
+        <a href="cash" id="nav-search" url="cash" class="icon search-32 menu-item active">
+        <span class="nav-text">Caja</span></a>
+      </li>
+
+      <li>
+      <a href="stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
+      <span class="nav-text">Productos</span></a></li>
+      <li><a href="admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
+
+      <li><a  href="payments" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
+
+
+      <li><a  href="users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
+
+      <li><a  href="events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
+
+
+      <li class="item-profile">
+      <span id="user-name" class="nav-text"></span>
+
+      </li>
+      <a url=""><img id="profile-picture"/></a>
+      
+
+      </ul>
+
+   
+    </nav>
+    </div>
+  <!--
+  <section id="alert" class="overlay">
+    <div class="msg" id="error">
+      <h1 class="title">Algo salio mal....</h1>
+      <p id="msg">
+      </p>
+      <div id="actions">
+      <div>
+
+    </div>
+    <div class="msg" id="detail">
+      <h1 class="title">Algo salio mal....</h1>
+      <p id="msg">
+      </p>
+      <div id="actions">
+      <div>
+    </div>
+    <button id="close">X</button>
+  </section>
+-->
+  <!-- end alerts -->
+  <div class="layout">
+  <section id="content">
+   
+  </section>
+  <!-- alerts -->
+  <!--
+   <section class="float-rigth" id="cash">
+   cash header 
+  <div class="header">
+    <div class="banner">
+      <img class="bigLogo" src="/assets/img/logo.png"/>
+    </div>
+        <div class="search card clearfix">
+    <input type="search" placeholder="Código de barras o descripcion" name="code" autofocus id="box"/>
+    <button class="searchbutton" id="toogleSearch">
+    </button>
+    </div>
+
+   <div class="card results" id="results">
+    </div>
+    </div>
+    -->
+     <!-- cash header -->
+     <!--
+    <div class="grid">
+    <div class="item">
+      <strong class="number">#</strong>
+      <strong class="code ">Código</strong>
+      <strong class="description">Descripcion</strong>
+      <strong class="saleI">Precio</strong></div>
+    <ul id="list-items" class="clearfix">
+    </ul>
+    </div>
+  </section>
+  <!-- stock-->
+<!--
+  <section id="stock">
+    <div class="bar ">
+      <ul class="clearfix">
+      <li><span class="current">Más Vendidos</span></li>
+      <li><span>Categorias</span></li>
+      <li><span>Antiguos</span></li>
+      <li class="stockSearch">
+        <div>
+        <input type="text" id="stockSearch" placeholder="Código de barras o descripcion"/>
+        <button class="clearfix ss"></button>
+        </div>
+      </li>
+      </ul>
+    </div>
+    <div class="grid">
+    <div class="little item">
+      <strong class="number">#</strong>
+      <strong class="code ">Código</strong>
+      <strong class="description">Descripcion</strong>
+      <strong class="saleI">Precio</strong>
+      <strong class="stock">Stock</strong>
+      <strong class="update">Última venta</strong>
+      </div>
+    <ul id="list" class="clearfix">
+    </ul>
+    </div>
+  </section>
+  <!--end stock-->
+  <!--
+  <section id="payments"></section>
+  <section id="users"></section>
+  <section id="events"></section>
+  <!--admin-->
+  <!--
+   <section id="admin">
+     <iframe src="views/error.stock"></iframe>
+   </section>
+<!--end admin -->
+<!-- end cash header -->
+  </div>
+  <div class="ticket" id="ticket">
+  <p><span id="date" class="date">Abril 18, 2014 10:25</span></p>
+  <p><label for="total">total</label>
+  <label name="total" id="total" type="text" disabled="true" >0.0</label></p>
+  <input name="pay" id="pay" type="text" value="0" /></p>
+  <label name="total" id="change" type="text"  ></label></p>
+  <div><button id="sold">cobrar</button><button id="cancel">cancelar</button></div>
+  </div>
+
+  </div>
 </html>
+    <script type="text/javascript" src="/assets/js/jquery.js"></script>
+      <script type="text/javascript" src="/assets/js/moment.js"></script>
+  <script type="text/javascript" src="/assets/js/core.js"></script>
+  <script type="text/javascript" src="/assets/js/models.js"></script>
+
+  <script type="text/javascript" src="/assets/js/users.js"></script>
+
+   <script>
+    $(function() {
+      $('nav a').click(function(e) {
+        href = $(this).attr("href");
+        
+        loadContent(href);
+        history.pushState('', 'New URL: '+href, href);
+        e.preventDefault();
+        
+       
+      });
+      
+      // THIS EVENT MAKES SURE THAT THE BACK/FORWARD BUTTONS WORK AS WELL
+      window.onpopstate = function(event) {
+        console.log("pathname: "+location.pathname);
+        loadContent(location.pathname);
+      };
+
+    });
+  
+    function loadContent(u){
+      //fo out the  slashs
+      u = u.split("/").pop();
+      if (u == "") {
+        u = "cash"
+      }
+      call = $.getJSON("blondie.php", {url: u})
+    .done(function(json){
+          // THIS LOOP PUTS ALL THE CONTENT INTO THE RIGHT PLACES
+          $.each(json, function(key, value){
+
+            $(key).empty();
+            html = $(key).html(value).text();
+            $(key).html(html);
+          });
+        
+
+      $('nav a').removeClass('active');
+      $('nav a[href="'+u+'"]').addClass('active');
+      loadCore();
+    });
+  }
+
+
+
+  </script>
+
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    loadContent(location.pathname);
+    load();
+    getUser();
+    loadCore();
+
+  });
+  </script>
+
+  

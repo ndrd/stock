@@ -1,0 +1,8 @@
+"UPDATE `stock` SET `stock`=`stock` + 1, `rank`=`rank` + 0.01 WHERE `hash` LIKE '$hash'"
+
+"INSERT INTO `stock`.`tickets` (`id`, `user`, `date`, `nItems`, `total`, `details`) VALUES (NULL, '$user', CURRENT_TIMESTAMP, '$items', '$total', '$details')"
+
+"SELECT SUM(nItems) AS Items FROM tickets WHERE date > CURDATE()"
+"SELECT SUM(total) AS totalDay FROM tickets WHERE date > CURDATE()""
+
+SELECT * FROM `stock` WHERE 1 ORDER BY `stock`.`lastEdit` DESC LIMIT 0,10
