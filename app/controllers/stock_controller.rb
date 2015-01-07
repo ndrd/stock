@@ -9,10 +9,8 @@ class StockController < ApplicationController
 	end
 
 	def admin
-		if session[:current_id] not nil
-			render "new"
-		end
-		redirect_to "/login" 
+		render "new"
+#		redirect_to "/login" 
 	end
 
 
