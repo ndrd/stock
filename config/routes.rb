@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'cash' => 'stock#cash'
 
+  get 'stock/:id' => 'stock#details'
+
   get 'stock' => 'stock#stock'
 
   get 'admin' => 'stock#admin'
@@ -22,6 +24,10 @@ Rails.application.routes.draw do
   get 'events' => 'stock#events'
 
   get 'users' => 'stock#users'
+
+  get 'info' => 'stock#info'
+
+  get 'search' => 'stock#search'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

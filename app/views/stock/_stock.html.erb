@@ -1,30 +1,27 @@
-<section class="float-rigth" id="cash">
-<script>
- $("#box").focus();
-</script>
-
-  <!-- cash header -->
-  <div class="header">
-    <div class="banner">
-      <img class="bigLogo" src="assets/img/logo.png">
+<section id="stock">
+    <div class="bar ">
+      <ul class="clearfix">
+      <li><span class="current">Más Vendidos</span></li>
+      <li><span>Categorias</span></li>
+      <li><span>Antiguos</span></li>
+      <li class="stockSearch">
+        <div>
+        <input type="text" id="stockSearch" autofocus placeholder="Código de barras o descripcion">
+        <button class="clearfix ss"></button>
+        </div>
+      </li>
+      </ul>
     </div>
-        <div class="search card clearfix">
-    <input type="search" placeholder="Código de barras o descripcion" name="code" autofocus id="box">
-    <button class="searchbutton" id="toogleSearch">
-    </button>
-    </div>
-
-   <div class="card results" id="results">
-    </div>
-    </div>
-     <!-- cash header -->
-    <div class="grid">
-    <div class="item">
+    <div class="grid top50">
+    <div class="little item">
       <strong class="number">#</strong>
       <strong class="code ">Código</strong>
       <strong class="description">Descripcion</strong>
-      <strong class="saleI">Precio</strong></div>
-    <ul id="list-items" class="clearfix">
+      <strong class="saleI">Precio</strong>
+      <strong class="stock">Stock</strong>
+      <strong class="update">Última venta</strong>
+      </div>
+    <ul id="list" class="clearfix">
     </ul>
     </div>
   </section>

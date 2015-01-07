@@ -2,14 +2,15 @@ $(function(){
 	  $("nav").find("a").each(function(k,v){ 
       loc = $(v).attr("href");
       $(v).removeClass("active")
-      console.log(loc + " vs " + location.pathname.split("/").pop() )
-      if(loc === location.pathname.split("/").pop())
-        $(v).addClass("active")
+      if(loc === location.pathname.split("/").pop()) {
+        $(v).addClass("active");
+        return;
+      }
     });
 });
 
 window.modeSearch = false;
-window.apiUrl = "kaiser.php";
+window.apiUrl = "search";
 window.user = null;
 window.tiket = null;
 
@@ -20,13 +21,15 @@ var styles =  function() {
 var loadCore = function() {
 		console.log("Core loader");
 		$("#date").text(moment().format('LL'));
+
 		$("#toogleSearch").click(function(){
+			console.log("busqueda")
 			window.modeSearch = !window.modeSearch;
 			 $( this ).toggleClass( "searchOn" );
 			 $("#results").toggle();
 			 if(window.modeSearch) {
 				 $.getJSON( apiUrl, {
-				    search: $("#box").val()
+				    q: $("#box").val()
 				    })
 				   .done(function( data ) {
 				     	parseResults(data,"results");
@@ -184,15 +187,14 @@ var saveTicket =  function(ticket) {
 
 
 var parseResults =  function(data, container) {
-	data = data.data
+	console.log(data)
 	$("#" + container).empty();
 	for(i = 0; i < data.length; i++){
 		$("#"+container).append(itemyze(data[i]));
-		}
+	}
 }
 
 var parseResults2 =  function(data, container) {
-	data = data.data
 	$("#" + container).empty();
 	for(i = 0; i < data.length; i++){
 		$("#"+container).append(itemDetailToHtml(makeItem(data[i]),i));
