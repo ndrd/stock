@@ -15,25 +15,25 @@
   <div class="main content clearfix" >
   <!--menu-->
   <nav id="nav" >
-      <a href="/info" id="logo" class="logo"></a>
+      <a href="info" id="logo" class="logo"></a>
       <ul id="nav-items" >
 
       <li>
-        <a href="/cash" id="nav-search" url="cash" class="icon search-32 menu-item active">
+        <a href="cash" id="nav-search" url="cash" class="icon search-32 menu-item active">
         <span class="nav-text">Caja</span></a>
       </li>
 
       <li>
-      <a href="/stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
+      <a href="stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
       <span class="nav-text">Productos</span></a></li>
-      <li><a href="/admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
+      <li><a href="admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
 
-      <li><a  href="/payments" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
+      <li><a  href="pays" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
 
 
-      <li><a  href="/users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
+      <li><a  href="users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
 
-      <li><a  href="/events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
+      <li><a  href="events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
 
 
       <li class="item-profile">
@@ -72,7 +72,7 @@
   <div class="layout">
 
   <section id="content">
-   <%= yield %>
+  <%= yield %>
   </section>
   <!-- alerts -->
   <!--
@@ -164,62 +164,9 @@
 
   <script type="text/javascript" src="/assets/js/users.js"></script>
 
-   <script>
-    $(function() {
-      $('nav a').click(function(e) {
-        href = $(this).attr("href");
-        
-        loadContent(href);
-        history.pushState('', 'New URL: '+href, href);
-        e.preventDefault();
-        
-       
-      });
-      
-      // THIS EVENT MAKES SURE THAT THE BACK/FORWARD BUTTONS WORK AS WELL
-      window.onpopstate = function(event) {
-        console.log("pathname: "+location.pathname);
-        loadContent(location.pathname);
-      };
-
-    });
-  
-    function loadContent(u){
-      //fo out the  slashs
-      u = u.split("/").pop();
-      if (u == "") {
-        u = "cash"
-      }
-      call = $.getJSON("blondie.php", {url: u})
-    .done(function(json){
-          // THIS LOOP PUTS ALL THE CONTENT INTO THE RIGHT PLACES
-          $.each(json, function(key, value){
-
-            $(key).empty();
-            html = $(key).html(value).text();
-            $(key).html(html);
-          });
-        
-
-      $('nav a').removeClass('active');
-      $('nav a[href="'+u+'"]').addClass('active');
-      loadCore();
-    });
-  }
-
-
-
-  </script>
-
-
   <script type="text/javascript">
   $(document).ready(function(){
-    loadContent(location.pathname);
-    load();
-    getUser();
-    loadCore();
-
-  });
+   });
   </script>
 
   

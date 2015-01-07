@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+
   resources :items
 
   resources :welcomes
@@ -12,6 +14,14 @@ Rails.application.routes.draw do
   get 'cash' => 'stock#cash'
 
   get 'stock' => 'stock#stock'
+
+  get 'admin' => 'stock#admin'
+
+  get 'pays' => 'stock#pays'
+
+  get 'events' => 'stock#events'
+
+  get 'users' => 'stock#users'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

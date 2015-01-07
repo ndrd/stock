@@ -2,8 +2,8 @@ $(function(){
 	  $("nav").find("a").each(function(k,v){ 
       loc = $(v).attr("href");
       $(v).removeClass("active")
-      console.log(loc + " vs " + location.pathname )
-      if(loc === location.pathname)
+      console.log(loc + " vs " + location.pathname.split("/").pop() )
+      if(loc === location.pathname.split("/").pop())
         $(v).addClass("active")
     });
 });

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "items", id: false, force: true do |t|
     t.integer "id",          default: "nextval('item_id_seq'::regclass)", null: false
-    t.text    "hash"
+    t.text    "hush"
     t.text    "code",                                                     null: false
     t.text    "description",                                              null: false
     t.float   "sale",                                                     null: false
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.float   "rank",                                                     null: false
     t.text    "slug",                                                     null: false
     t.integer "category",                                                 null: false
+  end
+
+  create_table "users", force: true do |t|
+    t.text     "name"
+    t.text     "username"
+    t.datetime "last_check"
+    t.text     "slug"
   end
 
 end
