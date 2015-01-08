@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcomes#index'
+  root 'stock#cash'
 
   get 'cash' => 'stock#cash'
 
-  get 'stock/item/:id' => 'stock#details'
+  get 'stock/item/:id' => 'stock#item'
 
   get 'stock' => 'stock#stock'
 

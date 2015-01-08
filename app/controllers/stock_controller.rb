@@ -42,6 +42,11 @@ class StockController < ApplicationController
 		render json: @item
 	end
 
+	def item
+		@item = Item.friendly.find(params[:id])
+		render "new"
+	end
+
 	def pays
 		render "new"
 	end

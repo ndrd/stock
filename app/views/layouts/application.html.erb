@@ -21,21 +21,21 @@
       <ul id="nav-items" >
 
       <li>
-        <a href="cash" id="nav-search" url="cash" class="icon search-32 menu-item active">
+        <a href="/" id="nav-search" url="cash" class="icon search-32 menu-item active">
         <span class="nav-text">Caja</span></a>
       </li>
 
       <li>
-      <a href="stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
+      <a href="/stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
       <span class="nav-text">Productos</span></a></li>
-      <li><a href="admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
+      <li><a href="/admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
 
-      <li><a  href="pays" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
+      <li><a  href="/pays" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
 
 
-      <li><a  href="users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
+      <li><a  href="/users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
 
-      <li><a  href="events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
+      <li><a  href="/events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
 
 
       <li class="item-profile">
@@ -59,7 +59,7 @@
 
   </div>
   <div class="ticket" id="ticket">
-  <% yield :side %>
+    <% yield(:side) %>
   </div>
 
   </div>
@@ -68,7 +68,6 @@
 
   <script type="text/javascript" src="/assets/js/users.js"></script>
 
-  <script type="text/javascript" src="/assets/js/core.js"></script>
   <script type="text/javascript" src="/assets/js/models.js"></script>
          <script type="text/javascript" src="/assets/js/store.js"></script>
 
