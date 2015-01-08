@@ -1,4 +1,6 @@
 $(function(){
+	
+	
 	  $("nav").find("a").each(function(k,v){ 
       loc = $(v).attr("href");
       $(v).removeClass("active")
@@ -163,14 +165,15 @@ function processData(response, urlPath){
 window.item = null;
 
 var getItem =  function(code) {
-	var posting = $.post('kaiser.php' , code );
+	console.log(code)
+	var posting = $.getJSON('details' , code );
 	posting.done(function(d){
-	 	if(d.status == 0) {
+	 	if(d == null) {
 			alert("Elemento no encontrado");
 			return null;
 		} else {
-			d = d.item;
-			window.item = new Item(d[0],d[1],d[2],d[3],d[4],d[5]);
+			console.log(d);
+			window.item = d;
 			window.ticket.add(window.item);
 			$("#list-items").append(itemToHtml(window.item, window.ticket.saledItems));
 			$("#total").text(window.ticket.total);	 	

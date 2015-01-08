@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   get 'info' => 'stock#info'
 
   get 'search' => 'stock#search'
+
+  post 'details' => 'stock#details'
+  get 'details' => 'stock#details'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

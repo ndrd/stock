@@ -34,9 +34,10 @@ class StockController < ApplicationController
 		render "new"
 	end
 
+	
 
 	def details
-		@item = Item.friendly.find(params[:id])
+		@item = Item.find_by_code(params[:code])
 		render json: @item
 	end
 

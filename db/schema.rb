@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.float   "cost",        null: false
     t.float   "stock",       null: false
     t.float   "rank",        null: false
-    t.text    "slug",        null: false
     t.integer "category",    null: false
+    t.text    "slug"
   end
 
   create_table "users", force: true do |t|

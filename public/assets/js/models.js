@@ -34,7 +34,7 @@ function Ticket (User) {
 	this.hashes = [];
 	this.total = 0;
 	this.saledItems = 0;
-	this.user = user;
+	this.user = User;
 }
 
 function TicketDetail(ticket) {
