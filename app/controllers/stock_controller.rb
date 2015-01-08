@@ -10,9 +10,10 @@ class StockController < ApplicationController
 	end 
 
 	def search
-		@search = Item.last(10)
+		@search = Item.last(20)
+		#query for a like search items
 		if (params[:q])
-			@search = Item.where('description LIKE ?', '%' +params[:q].to_s + '%').limit(10)
+			@search = Item.where('description LIKE ?', '%' + params[:q].to_s + '%').limit(20)
 		end
 
 		render json: @search

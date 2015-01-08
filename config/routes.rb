@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'cash' => 'stock#cash'
 
-  get 'stock/:id' => 'stock#details'
+  get 'stock/item/:id' => 'stock#details'
 
   get 'stock' => 'stock#stock'
 
