@@ -16,6 +16,7 @@ class StockController < ApplicationController
 	end
 
 	def cash 
+		@ticket = Ticket.new
 	end
 
 	def admin

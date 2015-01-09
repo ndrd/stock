@@ -27,4 +27,16 @@ $(function (e){
 
 	});
 
+	$saveTicket.click(function(){
+		HashTicket.init();
+		$saving  = $.post("/tickets", HashTicket); 
+		$saving.done(function(){
+			stock.$ticketList.empty();
+			stock.toHtml.resetTicket();
+			$total.text("0.0");
+			$pay.val(0.0);
+			$change.val(0.0)
+		});
+	});
+
 });

@@ -21,15 +21,33 @@ class TicketsController < ApplicationController
   def edit
   end
 
+  def save
+    @tickets = Ticket.new(ticket_params)
+    render json: @tickets
+  end
+
   # POST /tickets
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
-
+    @hushs  = params[:ticket][:hushs]
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        format.json { render :show, status: :created, location: @ticket }
+        #iterate and save hushs with ticket id
+        @hushs.each do |item|
+          @sale = Sale.new
+          @sale.hush = item
+          @sale.ticket = @ticket.id
+
+          if @sale.save
+            format.html { redirect_to @ticket, notice: 'Item was successfully created.' }
+            format.json { render json: @ticket.errors, status: :unprocessable_entity }
+          else
+            format.html { render :new }
+            format.json { render json: @ticket.errors, status: :unprocessable_entity }
+          end 
+
+        end
       else
         format.html { render :new }
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
@@ -69,6 +87,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params[:ticket]
+      params.require(:ticket).permit(:username,:check_out_date, :total, :items, :hushs)
     end
 end

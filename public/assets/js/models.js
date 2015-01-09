@@ -29,13 +29,40 @@ function User(username,name,range, rank, cover) {
 
 function Ticket (User) {
 	var d = new Date();
-	this.date = d.toISOString();
+	this.check_out_date = d.toISOString();
 	this.items = [];
 	this.details = [];
 	this.hashes = [];
 	this.total = 0;
 	this.saledItems = 0;
 	this.user = User;
+	
+}
+
+var HashTicket = {
+	authenticity_token : null,
+
+	ticket : {
+		check_out_date : null,
+		items : 0,
+		total : 0,
+		username : null,
+		hushs : null,
+	},
+
+	init : function () {
+		var d = new Date();
+		HashTicket.ticket.check_out_date = d.toISOString();
+		HashTicket.ticket.username = stock.user.username;
+		HashTicket.ticket.items = stock.ticket.saledItems;
+		HashTicket.ticket.total = stock.ticket.total;
+		HashTicket.ticket.hushs = stock.ticket.hashes;
+
+		var tokenContainer = document.getElementsByName("authenticity_token");
+		var token = $(tokenContainer).val(); 
+
+		HashTicket.authenticity_token = token;
+	}
 }
 
 function TicketDetail(ticket) {

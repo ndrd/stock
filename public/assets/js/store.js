@@ -5,27 +5,35 @@ prettyTime = moment;
 prettyTime.lang("es");
 
 var stock = stock || {
-
+	/* parameters */
 	searchON : false, 
 	detailsURI : "details",
 	searchURI : "/search",
+	/* initializing instances */
 	ticket : new Ticket(),
 	item : new Item(),
-
+	user : null,
+	/* event triggers */
 	$list : $("#list"), 
 	$suggestionsHolder : $("#results"),
 	$ticketList : $("#list-items"),
 	$clock : $("#date"),
 
 	init :  function() {
+		stock.getUser();
 		stock.$clock.html(moment().format('LL'));
 	},
 
+	getUser : function () {
+		$.getJSON( "/current_user")
+		.done(function(user) {
+			stock.user = user;
+			stock.ticket.user = user;
+		});
+	},
 
 	/* get  item by its code */
 	getItem :  function (code) {
-		console.log(code)
-
 		$.getJSON( stock.detailsURI, {
 			code : code
 		})

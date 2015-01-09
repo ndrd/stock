@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'stock/last' => 'stock#stock'
 
+  get 'current_user' => 'logins#current'
+
   get 'admin' => 'stock#admin'
 
   get 'pays' => 'stock#pays'
@@ -41,6 +43,8 @@ Rails.application.routes.draw do
   get 'logout' => 'logins#logout'
 
   post 'login' => 'logins#create'
+
+  post 'ticket/save' => 'ticket#save'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

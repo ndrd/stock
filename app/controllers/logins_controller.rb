@@ -17,6 +17,16 @@ class LoginsController < ApplicationController
     redirect_to "/login"
   end
 
+  # retrieve the current logged user in json format
+  def current
+    if session[:current_user_id] !=  nil
+      @user = User.find(session[:current_user_id])
+      render json: @user
+    else
+      render :nothing
+    end
+  end
+
   # do the login 
   def create
     @login = Login.find_by_username(login_params[:username])
