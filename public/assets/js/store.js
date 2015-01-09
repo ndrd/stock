@@ -15,14 +15,17 @@ var stock = stock || {
 	$list : $("#list"), 
 	$suggestionsHolder : $("#results"),
 	$ticketList : $("#list-items"),
+	$clock : $("#date"),
 
 	init :  function() {
-		
+		stock.$clock.html(moment().format('LL'));
 	},
 
 
 	/* get  item by its code */
 	getItem :  function (code) {
+		console.log(code)
+
 		$.getJSON( stock.detailsURI, {
 			code : code
 		})
@@ -32,14 +35,16 @@ var stock = stock || {
 			else{
 				stock.ticket.add(item);
 				stock.$ticketList.append(stock.toHtml._item(item));
+				stock.ticketUI.update();
 			}
 		});
 	},
 
 	/* list items to the stock grid */
-	getItems : function (filter) {
+	getItems : function (filter, sort) {
 		$.getJSON(stock.searchURI, {
-			q : filter
+			q : filter,
+			s : sort
 		})
 		.done (function (results) {
 			if (results === null || results.length === 0)
@@ -72,12 +77,12 @@ var stock = stock || {
 
 	toHtml : {
 		_itemDetail :  function(item) {
-			return "<a href='stock/item/" + item.slug +"'><div class='little item'><span class='number'>"+ item.id + '</span>'+
+			return "<a href='/items/" + item.slug +"'><div class='little item'><span class='number'>"+ item.id + '</span>'+
 		      '<span class="code">'+ item.code+ '</span>'+
 		      '<span class="description">' + item.description +'</span>'+
 		      '<span class="saleI">' + item.sale +'</span>' +
 		      '<span class="stock">' + item.stock +'</span>'+
-		      '<span class="update">' + prettyTime(item.update).fromNow() +'</span></div></a>';
+		      '<span class="update">' + prettyTime(item.last_check).fromNow() +'</span></div></a>';
 		},
 
 		itemGrid : function (items) {
@@ -112,9 +117,26 @@ var stock = stock || {
 
 		showError : function (error) {
 
+		},
+
+		resetTicket : function () {
+			$ticketList.empty();
+			stock.ticket =  new Ticket();
 		}
 
+	},
 
+	ticketUI : {
+		/* triggers for the ticket ui */
+		$total : $("#total"),
+		$pay : $("#pay"),
+		$change : $("#change"),
+		$abort : $("#cancel"),
+		$saveTicket : $("#sold"),
+
+		update :  function () {
+			stock.ticketUI.$total.text(stock.ticket.total);
+		}
 	},
 
 	error : {
@@ -134,6 +156,8 @@ $(function(){
 	        $(v).addClass("active");
 	      }
     });
+
+	 stock.init();
 });
 
 

@@ -30,7 +30,7 @@ class LoginsController < ApplicationController
         redirect_to "/login"
       else
         session[:current_user_id] = @user.id
-        redirect_to @user
+        redirect_to "/"
       end
 
     else

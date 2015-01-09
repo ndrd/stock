@@ -28,7 +28,8 @@ function User(username,name,range, rank, cover) {
 }
 
 function Ticket (User) {
-	this.date = Date.now();
+	var d = new Date();
+	this.date = d.toISOString();
 	this.items = [];
 	this.details = [];
 	this.hashes = [];

@@ -1,0 +1,12 @@
+#ticket p{
+	margin-top: 0;
+}
+
+#total, #pay {
+	font-size: 85px;
+}
+
+#ticket {
+	top: 2%;
+	height: 75%;
+}

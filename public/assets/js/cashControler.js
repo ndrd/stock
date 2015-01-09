@@ -4,6 +4,7 @@ $(function () {
 	$box = $("#box");
 	$dateHolder = $("#date");
 	$sugestionsHolder = $("#results");
+	$ticketList = $("#list-items")
 
 	$box.focus();
 
@@ -11,9 +12,9 @@ $(function () {
 	$trigger.click( function (e) {
 		stock.searchON = !stock.searchON;
 		 $( this ).toggleClass( "searchOn" );
-		 $sugestionsHolder.toggle();
+		 $sugestionsHolder.toggle('slow');
 
-		 if( stock.searchON ) {
+		 if( stock.searchON && $box.val().length > 0 ) {
 		 	try {
 		 		stock.instantSearch($box.val());
 		 	} catch (err){
@@ -40,17 +41,19 @@ $(function () {
 		$(this).val("");
 	});
 
+	/* controler for the suggestions search */
 	$sugestionsHolder.delegate("li", "click", function(){
 	 	var data = $(this).attr("data");
 	 	var item = JSON.parse(data);
+	 	/* sold item */
 	 	stock.ticket.add(item);
-	 	// must end this time
-	 	$("#list-items").append(stock.toHtml._item(item));
-		$("#total").text("$" + window.ticket.total);	 	
-	 	window.modeSearch = !window.modeSearch;
-		 $("#toogleSearch").toggleClass( "searchOn" );
-		 $("#results").toggle();
-		 $("#box").val("");
-		 $("#box").focus();	
+	 	$ticketList.append(stock.toHtml._item(item));
+	 	stock.ticketUI.update();
+
+	 	stock.searchON = !stock.searchON;
+		$trigger.toggleClass( "searchOn" );
+		$sugestionsHolder.hide('slow');
+		$box.val("");
+		$box.focus();	
 	});
 });

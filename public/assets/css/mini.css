@@ -2,11 +2,10 @@
    	top:70;
   }
   .grid, .header {
-  	width: 580px;
     position: relative;
-    margin: 0 auto;
 
   }
+  /*
  .search {
   top: 50px
  }
@@ -28,7 +27,7 @@
   width :500px;
   }
 
-
+*/
 .bar li {
   display: block;
   float: left;

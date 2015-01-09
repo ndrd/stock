@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(version: 20150109045252) do
     t.integer "ticket"
   end
 
-  create_table "ticket", force: true do |t|
+  create_table "tickets", force: true do |t|
     t.text     "username",       null: false
     t.datetime "check_out_date"
     t.float    "total",          null: false
     t.integer  "items",          null: false
   end
 
-  add_index "ticket", ["id"], name: "ticket_id_key", unique: true, using: :btree
+  add_index "tickets", ["id"], name: "ticket_id_key", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.text     "name"

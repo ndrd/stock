@@ -1,33 +1,24 @@
 class StockController < ApplicationController
+	# verificar el metodo inicializador para verificar que se haya iniciado session
+
+	#renders the stock 
 	def stock 
-		@stock = 1
-		if (params[:q])
-			@stock = Item.find_by_description(params[:q])
-		else
-			@stock = Item.limit(25)
-		end
-		render "new"	 
 	end 
 
 	def search
-		@search = Item.last(20)
+		@search = Item.where('id > 0').order(:last_check).limit(20)
 		#query for a like search items
-		if (params[:q])
+		if (params[:q] != "")
 			@search = Item.where('description LIKE ?', '%' + params[:q].to_s + '%').order(:rank).limit(20)
 		end
-
 		render json: @search
 
 	end
 
 	def cash 
-		@cash = 1
-		render "new"
 	end
 
 	def admin
-		render "new"
-#		redirect_to "/login" 
 	end
 
 
@@ -45,10 +36,7 @@ class StockController < ApplicationController
 		render json: @item
 	end
 
-	def item
-		@item = Item.friendly.find(params[:id])
-		render "new"
-	end
+	
 
 	def pays
 		render "new"

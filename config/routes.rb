@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tickets
+
   resources :users
 
   resources :items
@@ -13,8 +15,6 @@ Rails.application.routes.draw do
   root 'stock#cash'
 
   get 'cash' => 'stock#cash'
-
-  get 'stock/item/:id' => 'stock#item'
 
   get 'stock' => 'stock#stock'
 

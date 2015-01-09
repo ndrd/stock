@@ -1,3 +1,5 @@
+  <section id="content">
+
 <script type="text/javascript" src="/assets/js/stockControler.js"></script>
 <section id="stock">
     <div class="bar ">
@@ -5,6 +7,12 @@
       <li><span class="current">Más Vendidos</span></li>
       <li><span>Categorias</span></li>
       <li><span>Antiguos</span></li>
+      <li class="stockSearch">
+        <div>
+              <%= link_to 'Nuevo Elemento', new_item_path %>
+
+        </div>
+      </li>
       </ul>
     </div>
     <div class="grid top50">
@@ -14,9 +22,11 @@
       <strong class="description">Descripcion</strong>
       <strong class="saleI">Precio</strong>
       <strong class="stock">Stock</strong>
-      <strong class="update">Última venta</strong>
+      <a href="/stock?s=last_check"><strong class="update">Última venta</strong></a>
       </div>
     <ul id="list" class="clearfix">
+
     </ul>
     </div>
+  </section>
   </section>

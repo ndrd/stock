@@ -8,6 +8,10 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/new.css">
     <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/mini.css">
+
+    <link type="text/css" rel="stylesheet" media="screen and (max-height: 750px)" href="/assets/css/slug.css">
+
+
        <script type="text/javascript" src="/assets/js/jquery.js"></script>
 
 
@@ -23,7 +27,7 @@
             <div id="search-bar">
             <i class="search-icon" id="toogleSearch"></i>
           
-               <input type="text" id="box" placeholder="Código de barras o descripción">
+               <input type="text" id="box" placeholder="Código de barras o descripción" value="<%= params[:q] %>">
             </div>
             <div class="card results" id="results">
                 
@@ -38,7 +42,7 @@
                 <li><a class="active" href="/">
                 <i class="icon-fly">Caja</i>
                 </a></li>
-                <li><a href="/stock/last">
+                <li><a href="/items?sort=last">
                 <i class="icon-dest">Stock</i>
                 </a></li>
                 <li><a href="/admin">
@@ -68,21 +72,12 @@
   <div class="wrapper">
 
   <div class="main content clearfix" >
-  <!--menu-->
-  
+    <%= yield %>
 
     </div>
 
-  <div class="layout">
 
-  <section id="content">
-  <%= yield %>
-  </section>
-
-  </div>
-  <div class="ticket" id="ticket">
-    <% yield(:side) %>
-  </div>
+  
 
   </div>
 </html>

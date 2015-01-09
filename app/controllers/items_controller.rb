@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    redirect_to "/stock"
   end
 
   # GET /items/1
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item, notice: 'Articulo actualizado' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -68,11 +68,11 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.find(params[:id])
+      @item = Item.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params[:item]
+      params.require(:item).permit(:description, :sale, :cost, :code, :hush, :rank, :category, :last_check, :stock)
     end
 end

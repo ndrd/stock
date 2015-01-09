@@ -1,10 +1,12 @@
 /* main stocker event listener */
 $(function () {
-	stock.getItems();
+	$box = $("#box");
+	$box.focus();
+
+	stock.getItems($box.val(),'last_check');
 	$list = $("list");
 	/* section stocker */
-	$("#box").focus();
-	$("#box").keyup( function (e) {
+	$box.keyup( function (e) {
 		stock.getItems($(this).val());
 	});
 

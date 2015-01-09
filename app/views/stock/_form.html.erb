@@ -8,9 +8,9 @@
     <%= f.text_field :cost,  :placeholder => "Costo"%><br/>
     <%= f.text_field :code,  :placeholder => "Código de barras"%><br/> 
     <%= f.text_field :category,  :placeholder => "categoria"%><br/> 
-    <%= f.text_field :stock,  :placeholder => "stock"%><br/> 
-    <%= f.text_field :hush,  :placeholder => "stock"%><br/> 
-    <%= f.text_field :rank,  :placeholder => "stock"%><br/> 
+    <input type="hidden" name="item[stock]" value="0">
+    <input type="hidden" name="item[hush]" value="uasd">
+    <input type="hidden" name="item[rank]" value="0">
     <input type="hidden" name="item[last_check]" value="2015-01-09T10:39:19.177Z" >
     <%= f.submit :Guardar, :class => "rc-button rc-button-submit" %><br/>
 <% end %>

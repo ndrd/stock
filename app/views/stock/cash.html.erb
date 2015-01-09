@@ -1,0 +1,47 @@
+
+  <div class="layout">
+  <section class="float-rigth" id="cash">
+<script type="text/javascript" src="/assets/js/cashControler.js"></script>
+
+  <!-- cash header -->
+  <div class="header">
+    <div class="banner">
+      <img class="bigLogo" src="assets/img/logo.png">
+    </div>
+
+    </div>
+     <!-- cash header -->
+    <div class="grid">
+    <div class="item">
+      <strong class="number">#</strong>
+      <strong class="code ">Código</strong>
+      <strong class="description">Descripcion</strong>
+      <strong class="saleI">Precio</strong></div>
+    <ul id="list-items" class="clearfix">
+    </ul>
+    </div>
+  </section>
+</div>
+  <div class="ticket" id="ticket">
+    <p><span id="date" class="date"></span></p>
+    <p>
+      <label for="total">Total </label>
+      <label name="total" id="total" type="text" disabled="true" >0.0</label>
+    </p>
+    <p>
+      <label for="pay">Pago </label>
+      <input name="pay" id="pay" type="text" value="0.0" />
+    </p>
+    <p>
+      <label for="change">Cambio </label><br/>
+      <label name="change" id="change" type="text"  >0.0</label>
+    </p>
+
+    <div  class="controls">
+      <button id="sold">cobrar</button>
+      <button id="cancel">cancelar</button>
+    </div>
+    <script type="text/javascript" src="/assets/js/ticketController.js"></script>
+  </div>
+    
+  
