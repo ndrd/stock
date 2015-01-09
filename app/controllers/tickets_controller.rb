@@ -7,14 +7,10 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all
   end
 
-  # GET /tickets/1
-  # GET /tickets/1.json
-  def show
-  end
-
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.last()
+    render json: @ticket
   end
 
   # GET /tickets/1/edit
@@ -40,7 +36,7 @@ class TicketsController < ApplicationController
           @sale.ticket = @ticket.id
 
           if @sale.save
-            format.html { redirect_to @ticket, notice: 'Item was successfully created.' }
+            format.html { redirect_to '/tickets/new' }
             format.json { render json: @ticket.errors, status: :unprocessable_entity }
           else
             format.html { render :new }

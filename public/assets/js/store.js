@@ -74,7 +74,7 @@ var stock = stock || {
 		})
 		.done (function (results) {
 			if (results === null || results.length === 0)
-				throw stock.error.noSearchResults;
+				stock.toHtml.showError(stock.error.noSearchResults)
 			else {
 				var html = stock.toHtml.suggestions(results);
 				stock.$suggestionsHolder.empty().append(html);
@@ -124,7 +124,7 @@ var stock = stock || {
 		},
 
 		showError : function (error) {
-
+			stock.$suggestionsHolder.html(error)
 		},
 
 		resetTicket : function () {
@@ -159,7 +159,6 @@ $(function(){
 	  $("nav").find("a").each(function(k,v){ 
 	      loc = $(v).attr("href");
 	      $(v).removeClass("active")
-	      console.log(loc + " vs " + location.pathname);
 	      if(loc === location.pathname) {
 	        $(v).addClass("active");
 	      }

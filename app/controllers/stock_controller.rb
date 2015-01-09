@@ -44,7 +44,6 @@ class StockController < ApplicationController
 	end
 
 	def events
-		render "new" 
 	end
 
 	def users
