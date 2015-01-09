@@ -47,11 +47,11 @@ function TicketDetail(ticket) {
 }
 
 Ticket.prototype.add = function(item) {
-	if (item instanceof Item) {
+	if (typeof item != 'undefined') {
 		this.items.push(item);
 		this.saledItems++;
 		this.total += item.sale;
-		this.hashes.push(item.hash);
+		this.hashes.push(item.hush);
 		category = new Category(item.category);
 		if(typeof this.details[item.category] == "undefined") {
 			this.details[item.category] = category;
@@ -67,11 +67,11 @@ Ticket.prototype.add = function(item) {
 };
 
 Ticket.prototype.delete = function(item) {
-	if(item instanceof Item) {
+	if(typeof item != 'undefined') {
 		this.items.pop(item);
 		this.saledItems--;
 		this.total -= item.sale;
-		this.hashes.pop(item.hash);
+		this.hashes.pop(item.hush);
 		if(typeof this.details[item.category] != "undefined") {
 			this.details[item.category].total  -= item.sale;
 			this.details[item.category].nItems--;

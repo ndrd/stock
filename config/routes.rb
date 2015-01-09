@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   get 'stock' => 'stock#stock'
 
+  get 'stock/categories' => 'stock#categories'
+
+  get 'stock/last' => 'stock#stock'
+
   get 'admin' => 'stock#admin'
 
   get 'pays' => 'stock#pays'

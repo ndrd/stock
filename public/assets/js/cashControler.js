@@ -3,7 +3,9 @@ $(function () {
 	$trigger = $("#toogleSearch");
 	$box = $("#box");
 	$dateHolder = $("#date");
-	$sugestionsHolder = $("#results")
+	$sugestionsHolder = $("#results");
+
+	$box.focus();
 
 	/* toogle button search action */
 	$trigger.click( function (e) {
@@ -42,6 +44,7 @@ $(function () {
 	 	var data = $(this).attr("data");
 	 	var item = JSON.parse(data);
 	 	stock.ticket.add(item);
+	 	// must end this time
 	 	$("#list-items").append(stock.toHtml._item(item));
 		$("#total").text("$" + window.ticket.total);	 	
 	 	window.modeSearch = !window.modeSearch;

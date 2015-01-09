@@ -3,7 +3,8 @@ $(function () {
 	stock.getItems();
 	$list = $("list");
 	/* section stocker */
-	$("#stockSearch").keyup( function (e) {
+	$("#box").focus();
+	$("#box").keyup( function (e) {
 		stock.getItems($(this).val());
 	});
 

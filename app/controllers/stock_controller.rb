@@ -13,7 +13,7 @@ class StockController < ApplicationController
 		@search = Item.last(20)
 		#query for a like search items
 		if (params[:q])
-			@search = Item.where('description LIKE ?', '%' + params[:q].to_s + '%').limit(20)
+			@search = Item.where('description LIKE ?', '%' + params[:q].to_s + '%').order(:rank).limit(20)
 		end
 
 		render json: @search
@@ -35,6 +35,9 @@ class StockController < ApplicationController
 		render "new"
 	end
 
+	def categories
+		render "new"
+	end
 	
 
 	def details

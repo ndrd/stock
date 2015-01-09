@@ -4,51 +4,79 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/fonts.css">
-  
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/main.css">
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/main.css">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/new.css">
     <link type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)" href="/assets/css/mini.css">
        <script type="text/javascript" src="/assets/js/jquery.js"></script>
 
 
 
   </head>
+
+  <header class="fly">
+       <a href="/"> <div class="upper" style="
+    background-image: url(/assets/img/stocker.png);
+"></div></a>
+        
+        <div class="search-bar-container">
+            <div id="search-bar">
+            <i class="search-icon" id="toogleSearch"></i>
+          
+               <input type="text" id="box" placeholder="Código de barras o descripción">
+            </div>
+            <div class="card results" id="results">
+                
+            </div>
+         </div> 
+         <div class="controls right">
+            <ul id="controls">
+              
+                <li><a class="p-20 right">
+                    <i class="icon-login"><% if (session[:current_user_id] != nil) %>
+                    <% @usuario = Usuario.find(session[:current_user_id]) %>
+                    <%= @usuario.nombres %> 
+                    <% else %>
+                    <%= "Ingresar" %>
+                    <% end %>
+                    </i>
+                </a></li>
+                
+            </ul>
+         </div>
+    </header>
+     <nav class="euro">
+        <div class="left link-co">
+            <ul id="links"  class="links">
+                <li><a class="active" href="/">
+                <i class="icon-fly">Caja</i>
+                </a></li>
+                <li><a href="/stock/last">
+                <i class="icon-dest">Stock</i>
+                </a></li>
+                <li><a href="/admin">
+                    <i class="icon-prom">Administración</i>
+                </a></li>
+                <li><a href="/eventos" class="border-rigth">
+                    <i class="icon-us">Eventos</i>
+                </a></li>
+            </ul>
+        </div>
+        <div class="right link-coco">
+            <ul class="commans">
+                <li><a href="viajes/llegadas/u/0"><i class="icon">Llegadas</i></a></li>
+                <li><a href="#"><i class="icon">Salidas Prox</i> </a></li>
+                <li><a href="nosotros/"><i class="icon">Info</i> </a></li>
+            </ul>
+        </div>
+    </nav>
+
   <div class="wrapper">
 
   <div class="main content clearfix" >
   <!--menu-->
-  <nav id="nav" >
-      <a href="info" id="logo" class="logo"></a>
-      <ul id="nav-items" >
+  
 
-      <li>
-        <a href="/" id="nav-search" url="cash" class="icon search-32 menu-item active">
-        <span class="nav-text">Caja</span></a>
-      </li>
-
-      <li>
-      <a href="/stock" id="nav-browse" url="product" class="icon browse-32 menu-item ">
-      <span class="nav-text">Productos</span></a></li>
-      <li><a href="/admin" class="icon discover-32 menu-item"><span class="nav-text">Administración</span></a></li>
-
-      <li><a  href="/pays" class="icon follow-32 menu-item"><span class="nav-text">Pagos</span></a></li>
-
-
-      <li><a  href="/users" url="users" class="icon radio-32 menu-item"><span class="nav-text">Usuarios</span></a></li>
-
-      <li><a  href="/events" url="events" class="icon collection-32 menu-item "><span class="nav-text">Eventos</span></a></li>
-
-
-      <li class="item-profile">
-      <span id="user-name" class="nav-text"></span>
-
-      </li>
-      <a url=""><img id="profile-picture"/></a>
-      
-
-      </ul>
-
-   
-    </nav>
     </div>
 
   <div class="layout">

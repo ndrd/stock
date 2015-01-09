@@ -8,12 +8,13 @@ var stock = stock || {
 
 	searchON : false, 
 	detailsURI : "details",
-	searchURI : "search",
+	searchURI : "/search",
 	ticket : new Ticket(),
 	item : new Item(),
 
 	$list : $("#list"), 
 	$suggestionsHolder : $("#results"),
+	$ticketList : $("#list-items"),
 
 	init :  function() {
 		
@@ -28,9 +29,10 @@ var stock = stock || {
 		.done(function(item) {
 			if (item === null)
 				throw stock.error.itemNotFound;
-			else
-				console.log(item)
-			
+			else{
+				stock.ticket.add(item);
+				stock.$ticketList.append(stock.toHtml._item(item));
+			}
 		});
 	},
 
@@ -44,7 +46,7 @@ var stock = stock || {
 				throw stock.error.noSearchResults;
 			else {
 				var html = stock.toHtml.itemGrid(results);
-				stock.$list.empty().append(html);
+				stock.$list.html(html);
 			}
 				
 		})
@@ -104,6 +106,10 @@ var stock = stock || {
 			return html;
 		},
 
+		toList :  function (item) {
+			var html = "";
+		},
+
 		showError : function (error) {
 
 		}
@@ -117,5 +123,18 @@ var stock = stock || {
 	}
 
 };
+
+$(function(){
+	
+	  $("nav").find("a").each(function(k,v){ 
+	      loc = $(v).attr("href");
+	      $(v).removeClass("active")
+	      console.log(loc + " vs " + location.pathname);
+	      if(loc === location.pathname) {
+	        $(v).addClass("active");
+	      }
+    });
+});
+
 
 
