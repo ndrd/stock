@@ -29,21 +29,8 @@
                 
             </div>
          </div> 
-         <div class="controls right">
-            <ul id="controls">
-              
-                <li><a class="p-20 right">
-                    <i class="icon-login"><% if (session[:current_user_id] != nil) %>
-                    <% @usuario = Usuario.find(session[:current_user_id]) %>
-                    <%= @usuario.nombres %> 
-                    <% else %>
-                    <%= "Ingresar" %>
-                    <% end %>
-                    </i>
-                </a></li>
-                
-            </ul>
-         </div>
+         
+
     </header>
      <nav class="euro">
         <div class="left link-co">
@@ -57,16 +44,23 @@
                 <li><a href="/admin">
                     <i class="icon-prom">Administración</i>
                 </a></li>
-                <li><a href="/eventos" class="border-rigth">
+                <li><a href="/events" class="border-rigth">
                     <i class="icon-us">Eventos</i>
                 </a></li>
             </ul>
         </div>
         <div class="right link-coco">
             <ul class="commans">
-                <li><a href="viajes/llegadas/u/0"><i class="icon">Llegadas</i></a></li>
-                <li><a href="#"><i class="icon">Salidas Prox</i> </a></li>
-                <li><a href="nosotros/"><i class="icon">Info</i> </a></li>
+                <li><a class="p66" href="/login"><i class="icon ">
+                <% if (session[:current_user_id] != nil) %>
+                    <% @usuario = User.find(session[:current_user_id]) %>
+                    <%= @usuario.username %> 
+                    <% else %>
+                    <%= "Ingresar" %>
+                    <% end %>
+              </i> </a></li>
+              <li><a href="/logout"><i class="icon">Cerrar Sesión</i></a></li>
+
             </ul>
         </div>
     </nav>

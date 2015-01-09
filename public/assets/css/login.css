@@ -1,6 +1,6 @@
-    html, body {
+p    html, body {
   font-family: 'Open Sans',Arial, sans-serif;
-  background-image: url("../img/login_bg.png");
+  background-image: url("../img/dd.jpg");
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -24,6 +24,7 @@
   font-weight: 300;
   margin-top: 0;
   margin-bottom: 20px;
+  text-align: center;
   }
   .banner h2 {
   font-family: 'Open Sans', arial;
@@ -112,23 +113,22 @@
   input[type=text],
   input[type=url] {
   -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  display: inline-block;
-  height: 36px;
-  padding: 0 8px;
-  margin: 0;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-border-radius: 1px;
-  -webkit-border-radius: 1px;
-  border-radius: 1px;
-  font-size: 15px;
-  color: #404040;
+-webkit-appearance: none;
+appearance: none;
+display: inline-block;
+height: 36px;
+padding: 0 8px;
+margin: 0;
+background: rgba(0, 0, 0, 0);
+border: 1px solid rgba(51, 51, 51, 0.36);
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+-moz-border-radius: 1px;
+-webkit-border-radius: 1px;
+border-radius: 2px;
+font-size: 15px;
+color: rgb(255, 255, 255);
   }
 
     input[type=email]:hover,
@@ -224,7 +224,7 @@
   border: 1px solid rgba(51,51,51,0.36);
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: transparent;
+  background-color: rgba(255, 58, 49, 0.9);
 
   }
   .rc-button-submit:active {
@@ -263,4 +263,18 @@
 
   #list{
     padding: 20;
+  }
+
+  .logo {
+    background-image: url(/assets/img/stocker.png);
+    display: block;
+    width: 20%;
+    height: 120px;
+    background-size: contain;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .notice {
+    color:red !important;
   }

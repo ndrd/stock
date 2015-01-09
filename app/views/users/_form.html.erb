@@ -1,18 +1,12 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 
   <div class="actions">
-    
-    <%= f.submit %>
+    <%= f.text_field :name, :placeholder => "Nombre completo "%>
+    <%= f.text_field :username, :placeholder => "Nombre de usuario"%>
+    <%= f.password_field :secret,:placeholder => "Contraseña" %></p>
+    <%= f.password_field :secret_confirm,:placeholder => "Confirme contraseña"%> </p>
+
+    <%= f.submit :Registrarse, :class => "rc-button rc-button-submit" %>
   </div>
 <% end %>

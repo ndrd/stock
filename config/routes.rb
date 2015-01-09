@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :users
 
   resources :items
@@ -33,8 +34,13 @@ Rails.application.routes.draw do
 
   get 'search' => 'stock#search'
 
-  post 'details' => 'stock#details'
   get 'details' => 'stock#details'
+
+  get 'login' => 'logins#login'
+
+  get 'logout' => 'logins#logout'
+
+  post 'login' => 'logins#create'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

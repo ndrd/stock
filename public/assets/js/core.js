@@ -1,15 +1,3 @@
-$(function(){
-	
-	
-	  $("nav").find("a").each(function(k,v){ 
-      loc = $(v).attr("href");
-      $(v).removeClass("active")
-      if(loc === location.pathname.split("/").pop()) {
-        $(v).addClass("active");
-        return;
-      }
-    });
-});
 
 window.modeSearch = false;
 window.apiUrl = "search";

@@ -1,0 +1,5 @@
+<%= form_for(:login, :url => {:controller => 'logins', :action => 'create'}) do |f| %>
+    <%= f.text_field :username,  :placeholder => "Usuario"%> </p>
+    <%= f.password_field :secret,  :placeholder => "Contraseña"%></p>
+    <%= f.submit :Ingresar, :class => "rc-button rc-button-submit" %>
+  <% end %>

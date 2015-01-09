@@ -10,11 +10,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.friendly.find(params[:id])
   end
 
   # GET /users/new
   def new
     @user = User.new
+    render :layout => false
   end
 
   # GET /users/1/edit
@@ -24,17 +26,50 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.new
+    @user_exists = User.friendly.find(params[:user][:username])
+    
+    if @user_exists
+      flash[:alert] = "Este nombre de usuario ya existe"
+      render "new", :layout => false and return
     end
+
+    @user.name = params[:user][:name]
+
+    @user.username  =  params[:user][:username]
+
+    @login = Login.new
+    @login.username = @user.username
+
+    if params[:user][:secret] != params[:user][:secret_confirm]
+      @login.destroy && user.destroy
+      flash[:alert] = "Las contraseñas no coinciden"
+      render "new", :layout => false and return
+    end
+    
+    @login.secret = Digest::SHA1.hexdigest(params[:user][:secret])
+    @login.last_login = '2015-01-08 20:53:12.50304'
+    
+    error = false
+    @user.save && @login.save 
+
+    begin
+
+     rescue Exception => e
+      error = true
+      @login.destroy
+      flash[:alert] = e.to_s
+    end 
+
+    if !error
+      session[:current_user_id] = @user.id
+      flash[:alert] = "Bienvenido a bordo!"
+      redirect_to @user
+    else
+      @login.destroy
+      render "new"
+    end
+
   end
 
   # PATCH/PUT /users/1
@@ -64,11 +99,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.new
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user]
+      params.require(:user).permit(:name, :username, :secret, :secret_confirm)
     end
 end
