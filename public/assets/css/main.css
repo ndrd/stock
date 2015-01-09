@@ -655,7 +655,21 @@ text-align: center;
 }
 
 /*************************************************************/
-  .signin-card {
+
+
+  form input {
+    background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(221, 221, 221, 0.3);
+  padding: 7px;
+  margin: 5;
+  border-radius: 2px;
+  width: 98%;
+  color: rgb(255, 255, 255);
+  /* font-weight: bold; */
+  font-size: 15px;
+  }
+
+    .signin-card {
   width: 274px;
   padding: 40px 40px;
   margin: 0 auto;
@@ -673,16 +687,4 @@ text-align: center;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  }
-
-  form input {
-    background: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(221, 221, 221, 0.3);
-  padding: 7px;
-  margin: 5;
-  border-radius: 2px;
-  width: 98%;
-  color: rgb(255, 255, 255);
-  /* font-weight: bold; */
-  font-size: 15px;
   }

@@ -8,9 +8,9 @@
     <%= f.text_field :cost,  :placeholder => "Costo"%><br/>
     <%= f.text_field :code,  :placeholder => "Código de barras"%><br/> 
     <%= f.text_field :category,  :placeholder => "categoria"%><br/> 
-    <%= f.text_field :stock,  :placeholder => "stock"%><br/> 
-    <%= f.text_field :hush,  :placeholder => "stock"%><br/> 
-    <%= f.text_field :rank,  :placeholder => "stock"%><br/> 
+    <%= f.hidden_field :stock, :value => 0,  :placeholder => "stock"%><br/> 
+    <%= f.hidden_field :hush, :id=> 'hush' , :placeholder => "hash"%><br/> 
+    <%= f.hidden_field :rank,  :placeholder => "rank"%><br/> 
     <input type="hidden" name="item[last_check]" value="2015-01-09T10:39:19.177Z" >
     <%= f.submit :Guardar, :class => "rc-button rc-button-submit" %><br/>
 <% end %>

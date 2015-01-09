@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    flash[:alert] = nil
     @item = Item.new
   end
 
@@ -30,15 +31,15 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    begin
+      @item.save
+     rescue Exception => e
+      error = true
+      @item.destroy
+      flash[:alert] = e.to_s
+    end 
+    render "new"
+
   end
 
   # PATCH/PUT /items/1

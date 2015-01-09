@@ -51,9 +51,9 @@ class UsersController < ApplicationController
     @login.last_login = '2015-01-08 20:53:12.50304'
     
     error = false
-    @user.save && @login.save 
 
     begin
+      @user.save && @login.save 
 
      rescue Exception => e
       error = true
