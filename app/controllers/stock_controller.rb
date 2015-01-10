@@ -9,7 +9,7 @@ class StockController < ApplicationController
 		@search = Item.where('id > 0').order(:last_check).limit(20)
 		#query for a like search items
 		if (params[:q] != "")
-			@search = Item.where('description LIKE ?', '%' + params[:q].to_s + '%').order(:rank).limit(20)
+			@search = Item.where('description LIKE ? OR  code LIKE ?', '%' + params[:q].to_s + '%','%' + params[:q].to_s + '%').order(:rank).limit(20)
 		end
 		render json: @search
 
@@ -46,7 +46,6 @@ class StockController < ApplicationController
 	def events
 	end
 
-	def users
-		render "new"
+	def zmart
 	end
 end

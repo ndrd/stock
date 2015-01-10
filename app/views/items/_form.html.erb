@@ -2,15 +2,22 @@
    <% if flash[:alert] %>
         <h2 class="notice"><%= flash[:alert] %></h2>
    <% end %>
-
-    <%= f.text_field :description,  :placeholder => "Descripción del articulo"%><br/>
+    <%= f.label "Descripción" %>
+    <%= f.text_field :description, :required => true, :placeholder => "Descripción del articulo"%><br/>
+    <%= f.label "Precio venta" %>
     <%= f.text_field :sale,  :placeholder => "Precio Venta"%><br/> 
+    <%= f.label "Costo" %>
     <%= f.text_field :cost,  :placeholder => "Costo"%><br/>
     <%= f.text_field :code,  :placeholder => "Código de barras"%><br/> 
     <%= f.text_field :category,  :placeholder => "categoria"%><br/> 
     <%= f.hidden_field :stock, :value => 0,  :placeholder => "stock"%><br/> 
     <%= f.hidden_field :hush, :id=> 'hush' , :placeholder => "hash"%><br/> 
-    <%= f.hidden_field :rank,  :placeholder => "rank"%><br/> 
-    <input type="hidden" name="item[last_check]" value="2015-01-09T10:39:19.177Z" >
-    <%= f.submit :Guardar, :class => "rc-button rc-button-submit" %><br/>
+    <%= f.hidden_field :rank, :value => 0, :placeholder => "rank"%><br/> 
+    <%= f.hidden_field :last_check, :id=> 'last_check' %>
+    <%= f.submit :Guardar %>
+    <% if  @item.id %>
+   
+      <button  id="destroyItem">Eliminar</button>
+   
+    <% end %><br/>
 <% end %>

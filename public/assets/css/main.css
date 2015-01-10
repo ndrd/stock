@@ -25,7 +25,18 @@ a, a:hover, a:active, a:visited {
 
 iframe {
   width: 100%;
-height: 100%;
+height: 86%;
+}
+
+button:hover {
+text-decoration: none;
+-o-transition: all 0.0s;
+-moz-transition: all 0.0s;
+-webkit-transition: all 0.0s;
+transition: all 0.0s;
+background-color: rgb(248, 248, 248);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 /*
 #nav {
@@ -53,7 +64,6 @@ padding-left: 0;
   .wrapper {
 	  position: relative;
 width: 100%;
-height: 90%;
   }
     
 
@@ -163,7 +173,8 @@ text-align: left;
 position: relative;
 z-index: 5;
 left: 58px;
-height: 350px;
+height: auto;
+max-height: 350;
 overflow: hidden;
 }
 
@@ -283,8 +294,20 @@ background-color: transparent;
 }
 
 
-#ticket button {
-  width: 120;
+.lleft {
+  left: 1% !important;
+}
+
+#notice, .notice {
+  font-size: 20px;
+  margin: 2px;
+  color: rgb(255, 58, 49);
+  font-weight: bold;
+  background-color: transparent !important;
+}
+
+#ticket button, #ticket input[type=submit] {
+  width: 43%;
   height: 32;
   margin:4;
   border-radius: 15;
@@ -294,7 +317,7 @@ background-color: transparent;
   font-size: 17px;
 }
 
-#ticket button:hover {
+#ticket button:hover, #ticket input[type=submit]:hover {
   border-color: rgba(255,58,49,1);
   background-color: rgba(255,58,49,1);
   color: white;
@@ -467,6 +490,14 @@ i {
   width: 12%;
 }
 
+.destroy {
+  z-index: 500;
+}
+
+.destroy:hover {
+  background-color: yellow;
+  font-size: 50;
+}
 #list-items,#list {
   width: 100%;
   height: 100%;
@@ -666,7 +697,7 @@ text-align: center;
   width: 98%;
   color: rgb(255, 255, 255);
   /* font-weight: bold; */
-  font-size: 15px;
+  font-size: 1.6em;
   }
 
     .signin-card {
@@ -688,3 +719,28 @@ text-align: center;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   }
+
+  .rc-button:hover {
+border: 1px solid rgb(198, 198, 198);
+color: rgb(51, 51, 51);
+text-decoration: none;
+-o-transition: all 0.0s;
+-moz-transition: all 0.0s;
+-webkit-transition: all 0.0s;
+transition: all 0.0s;
+background-color: rgb(248, 248, 248);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.rc-button-submit:hover {
+border: 1px solid rgba(51, 51, 51, 0.36);
+color: rgb(255, 255, 255);
+text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+background-color: rgba(255, 58, 49, 0.9);
+}
+
+form label {
+  color: rgb(245, 245, 245);
+}

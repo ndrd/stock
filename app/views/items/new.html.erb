@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="/assets/css/login.css">
 <div class="middle">
 <h1>Registrar elemento al stock</h1>
 
@@ -7,3 +6,8 @@
 
 </div>
 <%= link_to 'Back', items_path %>
+<script>
+	$(document).ready(function(){
+		stock.utils.newItem();
+	});
+</script>

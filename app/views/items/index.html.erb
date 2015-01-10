@@ -1,6 +1,5 @@
   <section id="content">
 
-<script type="text/javascript" src="/assets/js/stockControler.js"></script>
 <section id="stock">
     <div class="bar ">
       <ul class="clearfix">
@@ -34,8 +33,9 @@
           <span class="saleI"><%= item.sale %></span>
           <span class="stock"><%= item.stock %></span>
           <span class="update">prettyTime(item.last_check)</span>
-          <span class="destroy"><%= link_to 'x', item, method: :delete, data: { confirm: 'Are you sure?' } %></span>
         </div>
+        <span class="destroy"><%= link_to 'x', item, :class=>'destroy', method: :delete, data: { confirm: 'Are you sure?' } %></span>
+
       </a>
        
       </tr>

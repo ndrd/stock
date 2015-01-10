@@ -28,6 +28,8 @@ $(function (e){
 
 	});
 
+	
+
 	$saveTicket.click(function(){
 		HashTicket.init();
 		$saving  = $.post("/tickets", HashTicket); 
@@ -39,7 +41,7 @@ $(function (e){
 			$pay.val(0.0);
 			$change.val(0.0);
 			var fol = $saving.responseJSON;
-			$notice.text("#" + fol.id);
+			$notice.text("#" + fol.id+1);
 		});
 	});
 

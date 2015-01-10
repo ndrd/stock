@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
+    error = false;
     begin
       @item.save
      rescue Exception => e
@@ -38,7 +38,13 @@ class ItemsController < ApplicationController
       @item.destroy
       flash[:alert] = e.to_s
     end 
-    render "new"
+    
+    if error
+      render "new" and return
+    else
+      redirect_to @item
+    end
+
 
   end
 
@@ -56,20 +62,28 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
+  # POST/items/1
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
+    if session[:current_user_id] == nil
+      redirect_to "/login"
     end
+    begin
+          @item = Item.friendly.find(params[:id])
+    rescue Exception => e
+      redirect_to "/stock" and return
+    end
+    
+    if @item.destroy
+      redirect_to "/stock"
+    end
+    
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.friendly.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

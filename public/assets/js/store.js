@@ -18,10 +18,14 @@ var stock = stock || {
 	$suggestionsHolder : $("#results"),
 	$ticketList : $("#list-items"),
 	$clock : $("#date"),
+	$notice : $("#notice"),
+
 
 	init :  function() {
 		stock.getUser();
 		stock.$clock.html(moment().format('LL'));
+		stock.ticketUI.getTicketID();
+
 	},
 
 	getUser : function () {
@@ -134,6 +138,60 @@ var stock = stock || {
 
 	},
 
+	utils : {
+		$hush : $("#hush"),
+		$check : $("#last_check"),
+		$destroy : $("#destroyItem"),
+
+		newHash : function(size) {
+			var s = 6;
+			var hash = "";
+			var seed = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLXCVBNM";
+			if (typeof size !== "undefined" && size > s)
+				s = size;
+			
+			for (var i = 0; i < s; i++) {
+				hash += seed[Math.floor(Math.random() * seed.length)];
+			};
+
+			return hash;
+		},
+
+		now : function () {
+			var date  = new Date();
+			return date.toISOString();
+		},
+
+		newItem : function () {
+			stock.utils.$hush.val(stock.utils.newHash());
+			stock.utils.$check.val(stock.utils.now());
+		},
+
+		deleteItem :  function () {
+			if(confirm("Deseas eliminar este elemento?")){
+				var token = stock.utils.extractToken();
+				var id = location.pathname.split("/").pop();
+				$post = $.get("/items/"+id+"/delete", {
+					authenticity_token :  token,
+					hush : 	"ndrd",
+				});
+								console.log($post);
+
+				$post.done(function(){
+					alert("Articulo Eliminado");
+					location.href="/stock";
+				})
+			}
+
+		},
+
+		extractToken : function () {
+			var tokenContainer = document.getElementsByName("authenticity_token");
+			var token = $(tokenContainer).val(); 
+			return token;
+		},
+	},
+
 	ticketUI : {
 		/* triggers for the ticket ui */
 		$total : $("#total"),
@@ -144,6 +202,13 @@ var stock = stock || {
 
 		update :  function () {
 			stock.ticketUI.$total.text(stock.ticket.total);
+		},
+
+		getTicketID :  function () {
+			$json  = $.getJSON("/tickets/new");
+			$json.done(function(ticket){
+				stock.$notice.text(ticket.id);
+			});
 		}
 	},
 

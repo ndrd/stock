@@ -2,11 +2,24 @@
 	margin-top: 0;
 }
 
-#total, #pay {
+#total, #pay, #change {
 	font-size: 85px;
 }
 
 #ticket {
 	top: 2%;
 	height: 75%;
+}
+
+header, nav {
+	height: 50px;
+}
+
+
+.date {
+	font-size: 23px;
+}
+
+iframe {
+	height: 82%;
 }

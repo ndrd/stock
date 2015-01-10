@@ -38,9 +38,13 @@ Rails.application.routes.draw do
 
   get 'details' => 'stock#details'
 
+  get 'recargas' => 'stock#zmart'
+
   get 'login' => 'logins#login'
 
   get 'logout' => 'logins#logout'
+
+  get 'items/:id/delete' => 'items#destroy'
 
   post 'login' => 'logins#create'
 
