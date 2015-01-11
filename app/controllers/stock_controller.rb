@@ -6,10 +6,10 @@ class StockController < ApplicationController
 	end 
 
 	def search
-		@search = Item.where('id > 0').order(:last_check).limit(20)
+		@search = Item.limit(20).where('id > 0').order(:last_check).reverse_order
 		#query for a like search items
 		if (params[:q] != "")
-			@search = Item.where('description LIKE ? OR  code LIKE ?', '%' + params[:q].to_s + '%','%' + params[:q].to_s + '%').order(:rank).limit(20)
+			@search = Item.limit(20).where('description LIKE ? OR  code LIKE ?', '%' + params[:q].to_s + '%','%' + params[:q].to_s + '%').order(:rank).reverse_order
 		end
 		render json: @search
 
@@ -20,6 +20,7 @@ class StockController < ApplicationController
 	end
 
 	def admin
+		set_item
 	end
 
 
@@ -48,4 +49,17 @@ class StockController < ApplicationController
 
 	def zmart
 	end
+
+	private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_item
+      if session[:current_user_id] == nil
+      	redirect_to "/login" and return
+      else
+      	@user = User.find(session[:current_user_id])
+      end
+
+    end
+
+
 end

@@ -34,8 +34,12 @@ class TicketsController < ApplicationController
           @sale = Sale.new
           @sale.hush = item
           @sale.ticket = @ticket.id
+          
+          @item  = Item.find_by_hush(@sale.hush)
+          @item.rank = @item.rank + 0.01
+          @item.last_check = @ticket.check_out_date
 
-          if @sale.save
+          if @sale.save && @item.save
             format.html { redirect_to '/tickets/new' }
             format.json { render json: @ticket.errors, status: :unprocessable_entity }
           else

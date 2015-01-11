@@ -26,6 +26,11 @@ Rails.application.routes.draw do
 
   get 'admin' => 'stock#admin'
 
+  get 'admin/reports/:id' => 'report#show'
+
+  get 'admin/reports' => 'report#index'
+
+
   get 'pays' => 'stock#pays'
 
   get 'events' => 'stock#events'
