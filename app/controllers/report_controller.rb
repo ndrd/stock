@@ -14,8 +14,10 @@ class ReportController < ApplicationController
 		if @report and params[:id] == Time.zone.today.to_s
 			update
 		end
+	end
 
-		
+	def make_reports
+		#hope for review a ticket
 	end
 
 	private 
