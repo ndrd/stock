@@ -67,38 +67,28 @@
       <li><a href="/admin/reports?details=year"><span >Año</span></a></li>
       <li class="stockSearch">
         <span>
+      <%= @date %>
 
         </span>
       </li>
       </ul>
     </div>
-    <div >
-    	<h1 id="range"><%= @date %></h1>
-      <div id="reports">
-      <h1>
-  Estadisticas de venta
-  (github like)
-</h1>
+    <div class="grid top50">
+    <div class="little item">
+      <strong class="number"><a href="/stock?sort=id">#</a></strong>
+      <strong class="code ">Código</strong>
+      <strong class="description">Descripcion</strong>
+      <strong class="saleI">Venta</strong>
+      <strong class="stock">Articulos</strong>
+      <a href="/stock?s=last_check"><strong class="update">Generado</strong></a>
+      </div>
+    <ul id="list" class="clearfix">
 
-<h1>
-  Total del dia
-</h1>
-<h1>
-  # Articulos vendidos
-</h1>
-
-<h1>
-  Distribucion del stock
-</h1>
-
-<h1>
-  Articulos mas vendidos
-</h1>
-
-<h1>
-  Estadisticas de hora y dia
-</h1></div>
-    </div>
+    </ul>
+    </div
+    
+      
+ 
 
   </section>
 </div>

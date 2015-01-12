@@ -219,7 +219,7 @@ var stock = stock || {
 			$items : $("#items"),
 			$update_at :$("#lastUpdate"),
 			$details : $("#detailURI"),
-			$reports : $("#reports"),
+			$reports : $("#list"),
 
 			weekItem : function (item) {
 			return "<a href='/admin/reports/" + item.slug +"'><div class='little item'><span class='number'>"+ item.id + '</span>'+
