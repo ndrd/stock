@@ -26,6 +26,7 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.check_out_date = Time.zone.now
     @hushs  = params[:ticket][:hushs]
     respond_to do |format|
       if @ticket.save

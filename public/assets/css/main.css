@@ -53,7 +53,7 @@ background-color: rgb(248, 248, 248);
 }
 #nav ul {
 list-style: none;
--webkit-margin-before: 0;
+5-webkit-margin-before: 0;
 -webkit-margin-after: 0;
 -webkit-margin-start: 0;
 -webkit-margin-end: 0;
@@ -566,7 +566,7 @@ height: 15;
 background-color: transparent;
 padding: 14;
 border-bottom: 1px solid rgba(223, 223, 223, 0.39);
-
+font-weight: bold;
 }
 
 
@@ -621,8 +621,16 @@ color: #dfdfdf;
   position: relative;
   display: block;
   height: 4;
-  top: 8;
+  top: 6;
   margin: 0 auto;
+}
+
+.bar li a {
+  border: none !important;
+}
+
+.bar li a:hover {
+  background-color: transparent !important;
 }
 
 .bar .stockSearch{

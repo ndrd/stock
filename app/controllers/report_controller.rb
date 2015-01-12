@@ -1,19 +1,34 @@
 class ReportController < ApplicationController
 
 	def index
-		@reports = Report.all
+		details = params[:details]
+		if details
+			if details == "week"
+				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.week.ago.to_s)
+			elsif details == "month"
+				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.month.ago.to_s)
+			elsif details == "year"
+				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.year.ago.to_s)
+			end	
+		else
+			@reports = Report.last()
+		end
+
 	end
 
 	def show
 		@report = Report.find_by_day(params[:id].to_time)
 		#create if not exists
 		if @report == nil and params[:id] == Time.zone.today.to_s
+			puts 'Reach today'
 			today
 		end
 		#update the report
 		if @report and params[:id] == Time.zone.today.to_s
 			update
 		end
+		render json: @report
+
 	end
 
 	def make_reports

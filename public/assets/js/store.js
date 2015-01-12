@@ -229,6 +229,16 @@ $(function(){
 	      }
     });
 
+	 $(".bar").find("a").each(function(k,v){ 
+	 	  loc = location.protocol + "//" + location.host;
+  	      loc += $(v).attr("href");
+	      $(v).removeClass("current")
+	      console.log(loc + " vs " + location.href.toString())
+	      if(loc === location.href.toString()) {
+	        $(v).addClass("current");
+	      }
+    });
+
 	 stock.init();
 });
 

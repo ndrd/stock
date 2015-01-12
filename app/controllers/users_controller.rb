@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     end
     
     @login.secret = Digest::SHA1.hexdigest(params[:user][:secret])
-    @login.last_login = '2015-01-08 20:53:12.50304'
+    @login.last_login = Time.zone.now
     
     error = false
 
