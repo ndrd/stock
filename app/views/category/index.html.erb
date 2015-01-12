@@ -2,7 +2,7 @@
 
 <section id="stock">
     <div class="bar ">
-      <ul class="clearfix" id="avions">
+      <ul class="clearfix" >
       <li><a href="/stock?sort=rank"><span >Más Vendidos</span></a></li>
       <li><a href="/stock/categories"><span>Categorias</span></a></li>
       <li><a href="/stock?sort=old"><span>Antiguos</span></a></li>
@@ -15,18 +15,20 @@
       </ul>
     </div>
     <div class="grid top50">
-  
-    <ul id="list" class="clearfix">
+  <div class="full_contact">
+    <ul id="avions" class="clearfix">
     <% @categories.each do |category| %>
           <li>
-        <%= image_tag("/assets/aviones/" + category.modelo + ".jpg") -%>
+          <a href="/stock/categories/<%= category.slug %>">
+        <%= image_tag("/assets/aviones/" + category.id.to_s + ".jpg") -%>
         <div class="info_avion">
-          <strong>marca: </strong><span><%= category.marca %> </span><br/>        
-         </div>
+        <span><%= category.description %> </span><br/>        
+         </div></a>
       </li>
 
     <% end %>
     </ul>
+    </div>
     </div>
   </section>
   </section>

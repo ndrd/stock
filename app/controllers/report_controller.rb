@@ -6,16 +6,25 @@ class ReportController < ApplicationController
 		end
 
 		details = params[:details]
+		format = params[:f]
+		@date = Time.zone.today
 		if details
 			if details == "week"
+				@date = 1.week.ago.to_s.to_date.to_s + " | " + Time.zone.today.to_s
 				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.week.ago.to_s)
 			elsif details == "month"
+				@date = 1.month.ago.to_s.to_date.to_s + " | " + Time.zone.today.to_s
 				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.month.ago.to_s)
 			elsif details == "year"
+				@date = 1.year.ago.to_s.to_date.to_s + " | " + Time.zone.today.to_s
 				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.year.ago.to_s)
 			end	
 		else
 			@reports = Report.last()
+		end
+
+		if format == 'json'
+			render json: @reports
 		end
 
 	end
@@ -36,8 +45,33 @@ class ReportController < ApplicationController
 		if @report and params[:id] == Time.zone.today.to_s
 			update
 		end
-		render json: @report
 
+		format = params[:f]
+
+
+		if format == 'json'
+			render json: @report
+		end
+
+	end
+
+
+	def show_json
+		if session[:current_user_id] == nil
+			redirect_to "/login" and return
+		end
+
+		@report = Report.find_by_day(params[:id].to_time)
+		#create if not exists
+		if @report == nil and params[:id] == Time.zone.today.to_s
+			puts 'Reach today'
+			today
+		end
+		#update the report
+		if @report and params[:id] == Time.zone.today.to_s
+			update
+		end
+		render json: @report
 	end
 
 	def make_reports

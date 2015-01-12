@@ -56,31 +56,7 @@
 
     </style>
 
- <div class="ticket" id="ticket">
- <h1>
-	Estadisticas de venta
-	(github like)
-</h1>
 
-<h1>
-	Total del dia
-</h1>
-<h1>
-	# Articulos vendidos
-</h1>
-
-<h1>
-	Distribucion del stock
-</h1>
-
-<h1>
-	Articulos mas vendidos
-</h1>
-
-<h1>
-	Estadisticas de hora y dia
-</h1>
-  </div>
 <div class="layout">
   <section class="float-rigth" >
   <div class="bar ">
@@ -89,7 +65,6 @@
       <li><a href="/admin/reports?details=week"><span >Semana</span></a></li>
       <li><a href="/admin/reports?details=month"><span > Mes</span></a></li>
       <li><a href="/admin/reports?details=year"><span >Año</span></a></li>
-
       <li class="stockSearch">
         <span>
 
@@ -97,12 +72,51 @@
       </li>
       </ul>
     </div>
-    <div>
-    	<%= @reports.to_json %>
+    <div >
+    	<h1 id="range"><%= @date %></h1>
+      <div id="reports">
+      <h1>
+  Estadisticas de venta
+  (github like)
+</h1>
+
+<h1>
+  Total del dia
+</h1>
+<h1>
+  # Articulos vendidos
+</h1>
+
+<h1>
+  Distribucion del stock
+</h1>
+
+<h1>
+  Articulos mas vendidos
+</h1>
+
+<h1>
+  Estadisticas de hora y dia
+</h1></div>
     </div>
 
   </section>
 </div>
+ <div class="ticket" id="ticket">
+ <span id="date" class="date">12 de enero del 2015</span>
+    <p>
+      <label for="total">Total del dia </label>
+      <label name="total" id="total" type="text" disabled="true" >0.0</label>
+    </p>
+    <p>
+      <label for="total">Articulos vendidos </label>
+      <label name="total" class="total" id="items" type="text" disabled="true" >0.0</label>
+    </p>
+    <span id="lastUpdate"></span>
+    <a id ="detailURI"href="/admin/reports/">Detalles</a>
+ 
+  </div>
  
     
 
+<script src="/assets/js/reportController.js"></script>

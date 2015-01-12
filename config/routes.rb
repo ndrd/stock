@@ -18,7 +18,10 @@ Rails.application.routes.draw do
 
   get 'stock' => 'stock#stock'
 
-  get 'stock/categories' => 'stock#categories'
+  get 'stock/categories' => 'category#index'
+
+  get 'stock/categories/:id' => 'category#show'
+
 
   get 'stock/last' => 'stock#stock'
 
@@ -27,6 +30,8 @@ Rails.application.routes.draw do
   get 'admin' => 'stock#admin'
 
   get 'admin/reports/:id' => 'report#show'
+  get 'admin/reports/:id/json' => 'report#show_json'
+
 
   get 'admin/reports' => 'report#index'
 

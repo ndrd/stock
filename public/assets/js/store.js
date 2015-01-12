@@ -212,6 +212,51 @@ var stock = stock || {
 		}
 	},
 
+	reports : {
+		api : location.href,
+		UI : {
+			$total : $("#total"),
+			$items : $("#items"),
+			$update_at :$("#lastUpdate"),
+			$details : $("#detailURI"),
+			$reports : $("#reports"),
+
+			weekItem : function (item) {
+			return "<a href='/admin/reports/" + item.slug +"'><div class='little item'><span class='number'>"+ item.id + '</span>'+
+		      '<span class="code">'+ item.slug+ '</span>'+
+		      '<span class="description"> Reporte del ' + item.day +'</span>'+
+		      '<span class="saleI">' + item.total +'</span>' +
+		      '<span class="stock">' + item.items +'</span>'+
+		      '<span class="update">' + prettyTime(item.update_at).fromNow() +'</span></div></a>';
+			}
+		},
+
+
+
+		showReport : function () {
+			$json = $.getJSON(stock.reports.api,{
+				f : 'json'
+			});
+			console.log($json);
+			
+			$json.done(function(report){
+				if (report instanceof Array) {	
+					stock.reports.UI.$reports.empty();
+					for(i = 0; i < report.length; i++) {
+						stock.reports.UI.$reports.append(stock.reports.UI.weekItem(report[i]));
+						console.log(report[i]);
+					}
+				} else {
+					stock.reports.UI.$total.text(report.total);
+					stock.reports.UI.$items.text(report.items);
+					stock.reports.UI.$details.attr({href : '/admin/reports/' + report.slug});
+					stock.reports.UI.$update_at.text(prettyTime(report.update_at).fromNow())	;
+				}
+			});
+		},
+
+	},
+
 	error : {
 		itemNotFound : new Error ("404 Elemento no encontrado"),
 		noSearchResults :  new Error("No hay resultados para esta busqueda"),
@@ -233,7 +278,6 @@ $(function(){
 	 	  loc = location.protocol + "//" + location.host;
   	      loc += $(v).attr("href");
 	      $(v).removeClass("current")
-	      console.log(loc + " vs " + location.href.toString())
 	      if(loc === location.href.toString()) {
 	        $(v).addClass("current");
 	      }

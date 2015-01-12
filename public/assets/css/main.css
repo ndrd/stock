@@ -327,7 +327,7 @@ background-color: transparent;
   color: whitesmoke
 }
 
-#total{
+#total, .total{
   color: rgb(255,58,49) !important;
   font-size: 96;
   display: block;
@@ -504,6 +504,7 @@ i {
   overflow-y: scroll;
   top: 5px;
   position: relative;
+  font-weight: bold;
 }
 
 .overlay{
