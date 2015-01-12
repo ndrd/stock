@@ -4,9 +4,9 @@
 <section id="stock">
     <div class="bar ">
       <ul class="clearfix">
-      <li><span class="current">Más Vendidos</span></li>
-      <li><span>Categorias</span></li>
-      <li><span>Antiguos</span></li>
+      <li><a href="/stock?sort=rank"><span >Más Vendidos</span></a></li>
+      <li><a href="/stock/categories"><span>Categorias</span></a></li>
+      <li><a href="/stock?sort=old"><span>Antiguos</span></a></li>
       <li class="stockSearch">
         <span>
               <%= link_to 'Nuevo Elemento', new_item_path %>

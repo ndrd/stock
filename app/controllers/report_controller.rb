@@ -1,6 +1,10 @@
 class ReportController < ApplicationController
 
 	def index
+		if session[:current_user_id] == nil
+			redirect_to "/login" and return
+		end
+
 		details = params[:details]
 		if details
 			if details == "week"
@@ -17,6 +21,11 @@ class ReportController < ApplicationController
 	end
 
 	def show
+		
+		if session[:current_user_id] == nil
+			redirect_to "/login" and return
+		end
+
 		@report = Report.find_by_day(params[:id].to_time)
 		#create if not exists
 		if @report == nil and params[:id] == Time.zone.today.to_s
