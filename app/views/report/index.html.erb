@@ -73,7 +73,8 @@
       </li>
       </ul>
     </div>
-    <div class="grid top50">
+    <div class="grid top50" id="reports">
+    <% if @reports %>
     <div class="little item">
       <strong class="number"><a href="/stock?sort=id">#</a></strong>
       <strong class="code ">Código</strong>
@@ -85,7 +86,8 @@
     <ul id="list" class="clearfix">
 
     </ul>
-    </div
+    <% end %>
+    </div>
     
       
  
@@ -108,5 +110,5 @@
   </div>
  
     
-
+<script src="/assets/js/d3.min.js"></script>
 <script src="/assets/js/reportController.js"></script>

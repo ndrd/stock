@@ -10,6 +10,12 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+      begin
+        @item = Item.friendly.find(params[:id])
+      rescue Exception => e
+        redirect_to "/stock" and return
+      end
+
   end
 
   # GET /items/new
@@ -53,7 +59,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Articulo actualizado' }
+        format.html { redirect_to "/stock?q=", notice: 'Articulo actualizado' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -82,12 +88,16 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
-      @item = Item.friendly.find(params[:id])
+      begin
+        @item = Item.friendly.find(params[:id])
+          rescue Exception => e
+        @item = Item.new 
+      end
 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:description, :sale, :cost, :code, :hush, :rank, :category, :last_check, :stock)
+      params.require(:item).permit(:description, :sale, :cost, :code, :hush, :rank, :category, :last_check, :stock, :s)
     end
 end

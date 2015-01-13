@@ -60,7 +60,7 @@ class StockController < ApplicationController
 		render "new"
 	end
 
-	def events
+	def notes
 	end
 
 	def zmart

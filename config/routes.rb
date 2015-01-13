@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   get 'pays' => 'stock#pays'
 
-  get 'events' => 'stock#events'
+  get 'events' => 'stock#notes'
 
   get 'users' => 'stock#users'
 

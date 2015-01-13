@@ -175,7 +175,6 @@ var stock = stock || {
 					authenticity_token :  token,
 					hush : 	"ndrd",
 				});
-								console.log($post);
 
 				$post.done(function(){
 					alert("Articulo Eliminado");

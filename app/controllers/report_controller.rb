@@ -20,7 +20,9 @@ class ReportController < ApplicationController
 				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.year.ago.to_s)
 			end	
 		else
-			@reports = Report.last()
+			update
+			@reports = Report.last
+			@bars = false
 		end
 
 		if format == 'json'
@@ -94,6 +96,10 @@ class ReportController < ApplicationController
 			set_user
 			#create today report
 			@report = Report.find_by_day(Time.zone.today)
+			if @report == nil
+				@report = Report.new
+			end
+			@report.username = @user.username
 			@report.updated_at = Time.zone.now
 			@report.total = Ticket.where("check_out_date >= ? AND check_out_date <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day ).sum(:total)
 			@report.items = Ticket.where("check_out_date >= ? AND check_out_date <= ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day ).sum(:items)
