@@ -1,0 +1,12 @@
+circle.day {
+	stroke-width: 0;
+	fill: white;
+}
+
+circle.day:hover {
+	fill:red;
+}
+
+text {
+	fill: white;
+}

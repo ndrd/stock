@@ -18,7 +18,7 @@ $(function(){
 });
 
 
-(function() {
+var graph = function(reports) {
   var data = reports.slice()
   var format = d3.time.format("%a %b %d %Y")
   var amountFn = function(d) { return d.amount }
@@ -41,4 +41,4 @@ $(function(){
    .attr("r", 4)
    .attr("cx", function(d) { return x(dateFn(d)) })
    .attr("cy", function(d) { return y(amountFn(d)) }) 
-})();
+}

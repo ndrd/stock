@@ -256,6 +256,21 @@ var stock = stock || {
 
 	},
 
+	style : {
+		backgrounds : {
+			uri : "/assets/img/backgrounds/",
+			names : [1,2,3],
+			change :  function ()  {
+				var d = new Date();
+				var delta = Math.floor(d.getHours() / this.names.length);
+				var index = Math.floor(d.getHours() / delta);
+				console.log("index " + index)
+				var path = "url(" + this.uri + stock.style.backgrounds.names[index-1] +".jpg)";
+				$("body").css({backgroundImage: path });
+			}
+		}
+	},
+
 	error : {
 		itemNotFound : new Error ("404 Elemento no encontrado"),
 		noSearchResults :  new Error("No hay resultados para esta busqueda"),
