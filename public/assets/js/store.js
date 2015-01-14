@@ -260,12 +260,14 @@ var stock = stock || {
 		backgrounds : {
 			uri : "/assets/img/backgrounds/",
 			names : [1,2,3],
+
 			change :  function ()  {
 				var d = new Date();
-				var delta = Math.floor(d.getHours() / this.names.length);
+				var delta = Math.floor(24 / this.names.length);
 				var index = Math.floor(d.getHours() / delta);
 				console.log("index " + index)
-				var path = "url(" + this.uri + stock.style.backgrounds.names[index-1] +".jpg)";
+				var path = "url(" + this.uri + stock.style.backgrounds.names[index-1																																																																																																																																																																																																																																																																																																																												] +".jpg)";
+				console.log(path);
 				$("body").css({backgroundImage: path });
 			}
 		}
@@ -298,7 +300,13 @@ $(function(){
     });
 
 	 stock.init();
+	 setTimeout(stock.style.backgrounds.change(), 60000);
+
 });
+
+(function(){
+    // do some stuff
+})();
 
 
 
