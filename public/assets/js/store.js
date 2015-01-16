@@ -206,7 +206,6 @@ var stock = stock || {
 		getTicketID :  function () {
 			$json  = $.getJSON("/tickets/new");
 			$json.done(function(ticket){
-				stock.$notice.text(ticket.id);
 			});
 		}
 	},
