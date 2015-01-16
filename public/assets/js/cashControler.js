@@ -26,7 +26,14 @@ $(function () {
 
 	/* call to the instant search */
 	$box.keyup(function(e){
-		if(stock.searchON) {
+		if (!stock.searchON)
+			$sugestionsHolder.hide();
+
+		if (!$.isNumeric($box.val()))
+			$sugestionsHolder.show();
+		
+		if(stock.searchON ) {
+
 			stock.instantSearch($(this).val());
 		} else {
 			if(e.keyCode == 13 && $(this).val().length > 0) {
