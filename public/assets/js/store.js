@@ -6,7 +6,7 @@ prettyTime.lang("es");
 
 var stock = stock || {
 	/* parameters */
-	searchON : false, 
+	searchON : true, 
 	detailsURI : "details",
 	searchURI : "/search",
 	/* initializing instances */
