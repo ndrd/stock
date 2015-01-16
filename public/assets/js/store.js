@@ -4,7 +4,7 @@
 prettyTime = moment;
 prettyTime.lang("es");
 
-var stock = stock || {
+var stock = stock || { 
 	/* parameters */
 	searchON : true, 
 	detailsURI : "details",
