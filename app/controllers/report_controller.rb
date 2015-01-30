@@ -9,6 +9,7 @@ class ReportController < ApplicationController
 		format = params[:f]
 		@date = Time.zone.today
 		if details
+			@bars = true
 			if details == "week"
 				@date = 1.week.ago.to_s.to_date.to_s + " | " + Time.zone.today.to_s
 				@reports = Report.where("day <= ? AND day >= ? ", Time.zone.today.to_s, 1.week.ago.to_s)
