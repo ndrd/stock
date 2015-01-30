@@ -56,6 +56,8 @@ Rails.application.routes.draw do
 
   get 'items/:id/delete' => 'items#destroy'
 
+  get 'hole' => 'report#make_reports'
+
   post 'login' => 'logins#create'
 
   post 'ticket/save' => 'ticket#save'

@@ -56,8 +56,6 @@ $(function () {
 	 	stock.ticket.add(item);
 	 	$ticketList.append(stock.toHtml._item(item));
 	 	stock.ticketUI.update();
-
-	 	stock.searchON = !stock.searchON;
 		$trigger.toggleClass( "searchOn" );
 		$sugestionsHolder.hide('slow');
 		$box.val("");

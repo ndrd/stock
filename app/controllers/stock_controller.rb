@@ -29,7 +29,6 @@ class StockController < ApplicationController
 		if session[:current_user_id] == nil
 			redirect_to "/login" and return
 		end
-
 		@ticket = Ticket.new
 	end
 
@@ -46,7 +45,6 @@ class StockController < ApplicationController
 		if session[:current_user_id] == nil
 			redirect_to "/login" and return
 		end
-
 		@item = Item.find_by_code(params[:code])
 		render json: @item
 	end

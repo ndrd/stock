@@ -299,7 +299,6 @@ $(function(){
     });
 
 	 stock.init();
-	 setTimeout(stock.style.backgrounds.change(), 60000);
 
 });
 

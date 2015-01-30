@@ -77,7 +77,12 @@ class ReportController < ApplicationController
 	end
 
 	def make_reports
-		#hope for review a ticket
+		set_user
+		dates = Ticket.find_by_sql("select distinct check_out_date::date from tickets order by check_out_date")
+		dates.each do |date|
+			report_of_day(date.check_out_date)
+		end
+		render json: Report.all
 	end
 
 	private 
@@ -98,6 +103,7 @@ class ReportController < ApplicationController
 			@report = Report.find_by_day(Time.zone.today)
 			if @report == nil
 				@report = Report.new
+				@report.day = Time.zone.today
 			end
 			@report.username = @user.username
 			@report.updated_at = Time.zone.now
@@ -106,9 +112,28 @@ class ReportController < ApplicationController
 			@report.save
 		end
 
+		def report_of_day(day)
+			@report = Report.find_by_day(day)
+			if @report == nil
+				@report = Report.new
+				@report.day = day
+			end
+			@report.username = @user.username
+			@report.updated_at = Time.zone.now
+			start_of_day = day.beginning_of_day.change(:offset => "CST")
+			puts start_of_day
+			end_of_day = day.end_of_day.change(:offset => "CST")
+			@report.total = Ticket.where("check_out_date >= ? AND check_out_date <= ?", start_of_day, end_of_day ).sum(:total)
+			@report.items = Ticket.where("check_out_date >= ? AND check_out_date <= ?", start_of_day, end_of_day ).sum(:items)
+			@report.save
+		end
+
+
 		def set_user
 			if session[:current_user_id] != nil
 				@user = User.find(session[:current_user_id])
 			end
 		end
+
+
 end

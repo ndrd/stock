@@ -47,7 +47,7 @@ color: #dfdfdf;
 .bar li .current:after{
   content: "";
   width: 80;
-  background: rgb(255,58,49);
+  background: rgb(0, 230, 118);
   position: relative;
   display: block;
   height: 4;
