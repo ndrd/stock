@@ -1,5 +1,7 @@
 <%= form_for(:login, :url => {:controller => 'logins', :action => 'create'}) do |f| %>
+	<%= label_tag(:username, "Usuario") %>
     <%= f.text_field :username,  :placeholder => "Usuario"%> </p>
+  	<%= label_tag(:secret, "Contraseña") %>
     <%= f.password_field :secret,  :placeholder => "Contraseña"%></p>
-    <%= f.submit :Ingresar, :class => "rc-button rc-button-submit" %>
+    <%= f.submit :Ingresar, :class => "button" %>
   <% end %>

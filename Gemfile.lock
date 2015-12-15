@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/norman/friendly_id.git
+  revision: 8069fc9959215e5f4872927928b3b7a95e9beacd
+  specs:
+    friendly_id (5.2.0.beta.1)
+      activerecord (>= 4.0.0)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: c46b40b973a66eb8ac454c1d22e5df15da66d7c3
   specs:
@@ -53,8 +60,6 @@ GEM
     daemon_controller (1.2.0)
     erubis (2.7.0)
     execjs (2.2.2)
-    friendly_id (5.0.4)
-      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.6)
@@ -130,7 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  friendly_id
+  friendly_id!
   jbuilder (~> 2.0)
   jquery-rails
   mysql (~> 2.9, >= 2.9.1)

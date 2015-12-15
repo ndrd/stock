@@ -62,13 +62,15 @@ ActiveRecord::Schema.define(version: 20150112041604) do
     t.integer   "id",                        null: false
   end
 
-  create_table "users", id: false, force: true do |t|
-    t.integer   "id",                                  null: false
+  create_table "users", force: true do |t|
     t.text      "name"
     t.timestamp "last_check",                          null: false
     t.text      "slug"
     t.text      "username",                            null: false
     t.float     "rank",       limit: 53, default: 0.0, null: false
   end
+
+  add_index "users", ["id"], name: "id", unique: true, using: :btree
+  add_index "users", ["id"], name: "id_2", unique: true, using: :btree
 
 end
