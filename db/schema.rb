@@ -13,65 +13,59 @@
 
 ActiveRecord::Schema.define(version: 20150112041604) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "items", force: true do |t|
-    t.text     "hush"
-    t.text     "code",        null: false
-    t.text     "description", null: false
-    t.float    "sale",        null: false
-    t.float    "cost",        null: false
-    t.float    "stock",       null: false
-    t.float    "rank",        null: false
-    t.integer  "category",    null: false
-    t.text     "slug"
-    t.datetime "last_check"
+    t.text      "hush"
+    t.text      "code",                   null: false
+    t.text      "description",            null: false
+    t.float     "sale",        limit: 53, null: false
+    t.float     "cost",        limit: 53, null: false
+    t.float     "stock",       limit: 53, null: false
+    t.float     "rank",        limit: 53, null: false
+    t.integer   "category",               null: false
+    t.text      "slug"
+    t.timestamp "last_check",             null: false
   end
 
-  create_table "logins", id: false, force: true do |t|
-    t.text     "username"
-    t.text     "secret",     null: false
-    t.datetime "last_login", null: false
+  create_table "logins", primary_key: "username", force: true do |t|
+    t.text      "secret",     null: false
+    t.timestamp "last_login", null: false
   end
 
   create_table "reports", force: true do |t|
-    t.datetime "updated_at"
-    t.date     "day"
-    t.float    "total",      null: false
-    t.float    "items",      null: false
-    t.text     "username",   null: false
-    t.text     "slug"
+    t.timestamp "updated_at",            null: false
+    t.date      "day"
+    t.float     "total",      limit: 53, null: false
+    t.float     "items",      limit: 53, null: false
+    t.text      "username",              null: false
+    t.text      "slug"
   end
 
-  create_table "sales", id: false, force: true do |t|
-    t.integer "id",     default: "nextval('sales_id_seq'::regclass)", null: false
-    t.text    "hush",                                                 null: false
+  create_table "sales", force: true do |t|
+    t.text    "hush",   null: false
     t.integer "ticket"
   end
 
   create_table "tickets", force: true do |t|
-    t.text     "username",       null: false
-    t.datetime "check_out_date"
-    t.float    "total",          null: false
-    t.integer  "items",          null: false
+    t.text      "username",                  null: false
+    t.timestamp "check_out_date",            null: false
+    t.float     "total",          limit: 53, null: false
+    t.integer   "items",                     null: false
   end
-
-  add_index "tickets", ["id"], name: "ticket_id_key", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.text     "name"
-    t.datetime "last_check"
-    t.text     "slug"
-    t.text     "username",                 null: false
-    t.float    "rank",       default: 0.0, null: false
+    t.text      "name"
+    t.timestamp "last_check",                          null: false
+    t.text      "slug"
+    t.text      "username",                            null: false
+    t.float     "rank",       limit: 53, default: 0.0, null: false
   end
 
-  add_index "users", ["username"], name: "users_username_key", unique: true, using: :btree
+  add_index "users", ["id"], name: "id", unique: true, using: :btree
+  add_index "users", ["id"], name: "id_2", unique: true, using: :btree
 
 end

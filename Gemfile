@@ -25,13 +25,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem 'pg'
-
-gem 'therubyracer'
-
+gem 'mysql', '~> 2.9', '>= 2.9.1'
 gem 'passenger'
 
-gem 'friendly_id'
+gem 'friendly_id', :github => 'norman/friendly_id'
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 # Use ActiveModel has_secure_password
