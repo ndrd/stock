@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150112041604) do
     t.datetime "updated_at"
   end
 
-  create_table "items", id: false, force: true do |t|
+  create_table "items", force: true do |t|
     t.text      "hush"
     t.text      "code",                   null: false
     t.text      "description",            null: false
@@ -29,17 +29,14 @@ ActiveRecord::Schema.define(version: 20150112041604) do
     t.integer   "category",               null: false
     t.text      "slug"
     t.timestamp "last_check",             null: false
-    t.integer   "id",                     null: false
   end
 
-  create_table "logins", id: false, force: true do |t|
-    t.text      "username"
+  create_table "logins", primary_key: "username", force: true do |t|
     t.text      "secret",     null: false
     t.timestamp "last_login", null: false
   end
 
-  create_table "reports", id: false, force: true do |t|
-    t.integer   "id",                    null: false
+  create_table "reports", force: true do |t|
     t.timestamp "updated_at",            null: false
     t.date      "day"
     t.float     "total",      limit: 53, null: false
@@ -48,18 +45,16 @@ ActiveRecord::Schema.define(version: 20150112041604) do
     t.text      "slug"
   end
 
-  create_table "sales", id: false, force: true do |t|
-    t.integer "id",     null: false
+  create_table "sales", force: true do |t|
     t.text    "hush",   null: false
     t.integer "ticket"
   end
 
-  create_table "tickets", id: false, force: true do |t|
+  create_table "tickets", force: true do |t|
     t.text      "username",                  null: false
     t.timestamp "check_out_date",            null: false
     t.float     "total",          limit: 53, null: false
     t.integer   "items",                     null: false
-    t.integer   "id",                        null: false
   end
 
   create_table "users", force: true do |t|

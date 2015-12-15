@@ -102,6 +102,7 @@ class ReportController < ApplicationController
 			set_user
 			#create today report
 			@report = Report.find_by_day(Time.zone.today)
+			puts @report
 			if @report == nil
 				@report = Report.new
 				@report.day = Time.zone.today

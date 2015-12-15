@@ -2,7 +2,7 @@
   font-family: 'Open Sans',Arial;
   /*background-image: url("https://scontent-b-lax.xx.fbcdn.net/hphotos-xpf1/t31.0-8/1270298_4494877226249_4690543532153894416_o.jpg");
   b*/
-  background-image: url("../img/ddc.jpg");
+  background-image: url("http://data.techtimes.com/data/images/full/132442/databank-rey-jpg.jpg");
   background-size: cover;
   background-attachment: fixed;
   margin: 0;
@@ -301,7 +301,7 @@ background-color: transparent;
 #notice, .notice {
   font-size: 20px;
   margin: 2px;
-  color: rgb(0, 230, 118);
+  color: #07d159;
   font-weight: bold;
   background-color: transparent !important;
 }
@@ -318,8 +318,8 @@ background-color: transparent;
 }
 
 #ticket button:hover, #ticket input[type=submit]:hover {
-  border-color: rgb(0, 230, 118);
-  background-color: rgb(0, 230, 118);
+  border-color: #07d159;
+  background-color: #07d159;
   color: white;
 }
 
@@ -328,7 +328,7 @@ background-color: transparent;
 }
 
 #total, .total{
-  color: rgb(0, 230, 118) !important;
+  color: #07d159 !important;
   font-size: 96;
   display: block;
 }
@@ -398,7 +398,7 @@ background-size: cover;
   .sale {
     position: relative;
   float: right;
-  color: rgb(0, 230, 118)  ;
+  color: #07d159  ;
   }
 
     h1, h2,cover {
@@ -525,7 +525,7 @@ box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.38);
 }
 #list-items a:hover, .little:hover {
   cursor: pointer;
-  background-color: rgb(0, 230, 118);
+  background-color: #07d159;
 }
 
 #close {
@@ -543,7 +543,7 @@ left: 3;
 }
 
 #close:hover, #close:active {
-  background-color: rgb(0, 230, 118);
+  background-color: #07d159;
 }
 
 #change {
@@ -618,7 +618,7 @@ color: #dfdfdf;
 .bar li .current:after{
   content: "";
   width: 100;
-  background: rgb(0, 230, 118);
+  background: #07d159;
   position: relative;
   display: block;
   height: 4;
@@ -747,7 +747,7 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 border: 1px solid rgba(51, 51, 51, 0.36);
 color: rgb(255, 255, 255);
 text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-background-color: rgb(0, 230, 118);
+background-color: #07d159;
 }
 
 form label {
