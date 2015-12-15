@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new
-    @user_exists = User.friendly.find(params[:user][:username])
+    @user_exists = false#User.friendly.find(params[:user][:username])
     
     if @user_exists
       flash[:alert] = "Este nombre de usuario ya existe"

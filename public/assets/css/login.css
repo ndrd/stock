@@ -1,6 +1,6 @@
 p    html, body {
   font-family: 'Open Sans',Arial, sans-serif;
-  background-image: url("../img/ddc.jpg");
+  background-color: rgb(241,241,241);
   background-size: cover;
   margin: 0;
   padding: 0;
