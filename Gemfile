@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 gem 'mysql', '~> 2.9', '>= 2.9.1'
 gem 'passenger'
 gem 'execjs'
+gem "therubyracer"
 gem 'friendly_id', :github => 'norman/friendly_id'
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
